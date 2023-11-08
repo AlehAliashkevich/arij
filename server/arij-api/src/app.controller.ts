@@ -2,7 +2,9 @@ import { Controller, Get } from '@nestjs/common';
 
 @Controller()
 export class AppController {
-	constructor() {}
+	constructor() {
+		console.log('hello');
+	}
 	@Get()
 	public healthy(): string {
 		return 'HEALTHY';
