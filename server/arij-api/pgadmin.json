@@ -1,0 +1,21 @@
+{
+	"Servers": {
+		"1": {
+			"Name": "efficiently",
+			"Group": "Servers",
+			"Host": "postgres",
+			"Port": 5432,
+			"MaintenanceDB": "efficiently",
+			"Username": "test",
+			"Password": "test",
+			"UseSSHTunnel": 0,
+			"TunnelPort": "22",
+			"TunnelAuthentication": 0,
+			"KerberosAuthentication": false,
+			"ConnectionParameters": {
+				"sslmode": "prefer",
+				"connect_timeout": 10
+			}
+		}
+	}
+}

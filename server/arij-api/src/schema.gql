@@ -1,0 +1,2584 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Point {
+  x: Float!
+  y: Float!
+}
+
+type Line {
+  pS: Point!
+  pF: Point!
+}
+
+type ConstructionMeta {
+  points: [Point!]
+  color: String
+  size: Float
+  opacity: String
+  symbol: SymbolType
+  label: String
+  font: Float
+  type: PolygonType
+  elevations: [ElevationVisionMeta!]
+  detailsMeta: [ConstructionDetailsMeta!]
+  rotation: Float
+  screenshots: [ScreenShotModel!]
+  highlighted: [[Point!]!]
+  jump: [Float!]
+  buttonIsJump: Boolean
+  targetPageId: String
+  agileHorizon: AgileHorizonType
+  agileVertical: AgileVerticalType
+  mountHead: MountHeadType
+  degrees: Float
+  height: Float
+  width: Float
+  curb: Float
+  name: String
+  threshold: ThresholdType
+  wallToHorizon: AgileHorizonType
+  trims: [TrimTypes!]
+  shelves: [ShelfModel!]
+  cuts: [Cut!]
+  scale: Float
+  rounded: Boolean
+  measurePoint: MeasurePoint
+  wallToVertical: AgileVerticalType
+  base: Line
+  depth: Float
+  spaceId: String
+  index: Float
+  elevation: ConstructionElevations
+  tempTypeOpening: String
+}
+
+enum SymbolType {
+  square
+  circle
+  pin
+  location
+  sun
+  water
+  shower
+}
+
+enum PolygonType {
+  Rectangle
+  Polygon
+}
+
+enum AgileHorizonType {
+  none
+  center
+  left
+  right
+}
+
+enum AgileVerticalType {
+  none
+  center
+  top
+  bottom
+}
+
+enum MountHeadType {
+  none
+  mount
+  head
+}
+
+enum ThresholdType {
+  No
+  Center
+  Left
+  Right
+}
+
+enum TrimTypes {
+  Top
+  Right
+  Bottom
+  Left
+}
+
+enum MeasurePoint {
+  center
+  first
+  second
+}
+
+enum ConstructionElevations {
+  PLAN
+  NORTH
+  EAST
+  SOUTH
+  WEST
+  CEILING
+}
+
+type ShelfModel {
+  top: Float
+  index: Float
+}
+
+type Cut {
+  points: [Point!]
+  type: PolygonType
+}
+
+type ScreenShotModel {
+  url: String
+  elevation: ConstructionElevations
+}
+
+type ElevationVisionMeta {
+  planId: String
+  points: [Point!]
+  type: ConstructionElevations
+  clarification: String
+  slope: SlopeVisionType
+  height: Float
+  heightSecond: Float
+  heightCentral: Float
+  widthCentral: Float
+}
+
+enum SlopeVisionType {
+  none
+  slope
+  aframe
+}
+
+type ConstructionDetailsMeta {
+  id: String
+  type: ConstructionDetailsTypes
+  points: [Point!]
+  noteText: String
+  notePoint: Point
+  stage: String
+  editBtn: [Point!]
+  scaleLevel: Float
+}
+
+enum ConstructionDetailsTypes {
+  FIRST_TILE
+  TEXT
+  CENTER_LINE
+}
+
+type BookImageMeta {
+  points: [Point!]
+  template: String
+  absoluteScaleX: Float
+  absoluteScaleY: Float
+  index: Float
+  shapeSize: Float
+  x: Float
+  y: Float
+  cropX: Float
+  cropY: Float
+  cropHeight: Float
+  cropWidth: Float
+  originalWidth: Float
+  originalHeight: Float
+  direction: TextDirection
+  isDefaultImage: Boolean
+  isCropped: Boolean
+  borderRadiusEnabled: Boolean
+  listening: Boolean
+  draggable: Boolean
+  borderEnabled: Boolean
+  shadowOpacity: Float
+  shadowEnabled: Boolean
+  shadowColor: String
+  shadowOffsetY: Float
+  shadowOffsetX: Float
+  shadowBlur: Float
+  isScaleX: Boolean
+  isScaleY: Boolean
+  imageOpacity: Float
+  imageBrightness: Float
+  imageContrast: Float
+  imageSaturation: Float
+  imageScaleMode: String
+  imageBorderStyle: String
+  imageBorderColor: String
+  imageBorderWidth: Float
+  imageBorderRadius: Float
+  angle: Float
+  width: Float
+  height: Float
+  backFront: ImageFormatArrange
+  downUp: ImageFormatArrange
+  horizontalAlign: String
+  verticalAlign: String
+  lockProportions: Boolean
+  groups: [DragBoxGroup!]
+}
+
+enum TextDirection {
+  left
+  center
+  right
+  justify
+}
+
+enum ImageFormatArrange {
+  Back
+  Front
+  Down
+  Up
+}
+
+type HoverRectAttrs {
+  width: Float
+  height: Float
+  x: Float
+  y: Float
+}
+
+type OriginalTextData {
+  insert: String
+  delete: Float
+  retain: Float
+  attributes: TextAttributes
+}
+
+type TextAttributes {
+  font: String
+  size: String
+  bold: Boolean
+  italic: Boolean
+  color: String
+  underline: Boolean
+  align: String
+}
+
+type TextData {
+  insert: [String!]
+  delete: Float
+  retain: Float
+  attributes: TextAttributes
+}
+
+type BookItemOptionMeta {
+  size: Float
+  weight: Boolean
+  isStyle: Boolean
+  underline: Boolean
+  direction: TextDirection
+  font: String
+  fontWeight: String
+  fontStyle: String
+  color: String
+  text: String
+  width: Float
+  height: Float
+  placeholder: String
+  lineHeight: Float
+  draggable: Boolean
+  name: String
+  ellipsis: Boolean
+  wrap: String
+  angle: Float
+  offsetY: Float
+  isScaleX: Boolean
+  isScaleY: Boolean
+  backFront: ImageFormatArrange
+  downUp: ImageFormatArrange
+  horizontalAlign: String
+  verticalAlign: String
+  isHugContent: Boolean
+  isTruncate: Boolean
+  listening: Boolean
+  align: String
+  pdfX: Float
+  points: [Point!]
+  uppercase: Boolean
+  type: BookItemOptionType
+}
+
+enum BookItemOptionType {
+  Title
+  Name
+  LayoutItem
+  Custom
+}
+
+type BookItemOption {
+  isChecked: Boolean
+  label: String
+  value: String
+  type: BookItemOptionType
+  meta: BookItemOptionMeta
+  layoutItemId: String
+  field: String
+}
+
+type BookElementMeta {
+  size: Float
+  weight: Boolean
+  isStyle: Boolean
+  underline: Boolean
+  hoverRectAttrs: HoverRectAttrs
+  direction: TextDirection
+  font: String
+  fontWeight: String
+  fontStyle: String
+  color: String
+  text: String
+  width: Float
+  height: Float
+  placeholder: String
+  lineHeight: Float
+  draggable: Boolean
+  textData: [TextData!]
+  originalTextData: [OriginalTextData!]
+  isHugContent: Boolean
+  isTruncate: Boolean
+  horizontalAlign: String
+  verticalAlign: String
+  angle: Float
+  isScaleX: Boolean
+  isScaleY: Boolean
+  dynamicComponentType: DynamicComponentType
+  points: [Point!]
+  tailPoints: [Point!]
+  visible: Boolean
+  isPlaceholder: Boolean
+  theme: String
+  itemStyleMeta: BookElementMeta
+  marginLeft: Float
+  marginRight: Float
+  shapeSize: Float
+  id: String
+  isDefaultImage: Boolean
+  index: Float
+  pdfWidth: Float
+  pdfX: Float
+  highlighterWeight: Float
+  offsetY: Float
+  x: Float
+  y: Float
+  template: String
+  name: String
+  backFront: ImageFormatArrange
+  downUp: ImageFormatArrange
+  lockProportions: Boolean
+  sides: Float
+  colorOpacity: Float
+  imageBorderStyle: String
+  imageBorderColor: String
+  imageBorderWidth: Float
+  imageBorderRadius: Float
+  borderEnabled: Boolean
+  borderRadiusEnabled: Boolean
+  shadowColor: String
+  shadowOffsetY: Float
+  shadowOffsetX: Float
+  shadowBlur: Float
+  shadowOpacity: Float
+  shadowEnabled: Boolean
+  fill: String
+  fillOpacity: Float
+  imageOpacity: Float
+  imageBrightness: Float
+  imageContrast: Float
+  imageSaturation: Float
+  imageScaleMode: String
+  isCropped: Boolean
+  originalWidth: Float
+  originalHeight: Float
+  cropX: Float
+  cropY: Float
+  cropHeight: Float
+  cropWidth: Float
+  absoluteScaleX: Float
+  absoluteScaleY: Float
+  itemTitle: BookItemOption
+  groups: [DragBoxGroup!]
+  widthText: Float
+  imageMeta: BookImageMeta
+  align: String
+  options: [BookItemOption!]
+  cropperData: String
+  length: Float
+  startCap: String
+  endCap: String
+  dash: [Float!]
+  wrap: String
+  style: String
+  ellipsis: Boolean
+  listening: Boolean
+  borderStyle: String
+  dragInnerHTML: String
+  borderColor: String
+  borderWidth: Float
+  weightTool: Boolean
+  styleTool: Boolean
+  underlineTool: Boolean
+  linesWidth: [Float!]
+  attributes: [AttributeTextTemplate!]
+  countLines: Float
+  distanceHeight: Float
+}
+
+enum DynamicComponentType {
+  companyName
+  companyWebsite
+  currentDate
+  currentDate2
+  currentDate3
+  currentDate4
+  currentDate5
+  currentDate6
+  pageNumber
+  pageNumber2
+  pageNumber3
+  projectAddress
+  projectAddress2
+  projectName
+}
+
+type AttributeTextTemplate {
+  size: Float
+  weight: Boolean
+  isStyle: Boolean
+  underline: Boolean
+  direction: TextDirection
+  font: String
+  color: String
+  fontWeight: String
+  lineHeight: Float
+  align: String
+  id: AttributesGroupElement!
+  text: String!
+  realData: [String!]
+  templateId: String
+  visible: Boolean
+  marginLeft: Float
+  marginRight: Float
+}
+
+enum AttributesGroupElement {
+  Default
+  AttributeTitle
+  Value
+  Spacer
+}
+
+type BookElement {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  index: Float
+  template: String
+  name: String
+  projectFinishId: String
+  finishId: String
+  type: String
+  imageId: String
+  imageUrl: String
+  location: String
+  elementGroup: String
+  groupId: String
+  meta: BookElementMeta
+  system: String
+  isDefault: Boolean
+  isSystem: Boolean
+  screenshot: String
+  lastScreenUpdateDate: DateTime
+  orgId: String
+  serverId: String
+  objectId: String
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type ItemBoxElement {
+  id: Float
+  meta: BookElementMeta
+  type: BookPageElementTypes
+  order: Float
+}
+
+enum BookPageElementTypes {
+  Line
+  Text
+  ItemBox
+  ImageBox
+  Skeleton
+  Rectangle
+  Ellipse
+  Polygon
+  Guide
+  TextGroup
+  Note
+  Highlighter
+  Pencil
+  Distance
+  Object
+  AttributesGroup
+}
+
+type DragBoxGroup {
+  id: Float
+  padding: Float
+  alignmentVertical: VerticalAligns
+  alignmentHorizontal: HorizontalAligns
+  position: PositionEnum
+  elements: [ItemBoxElement!]
+}
+
+enum VerticalAligns {
+  Top
+  Center
+  Bottom
+}
+
+enum HorizontalAligns {
+  Left
+  Center
+  Right
+}
+
+enum PositionEnum {
+  Top
+  Right
+  Bottom
+  Left
+}
+
+type ProcessRecord {
+  type: BookProcessRecordType!
+  pageId: String!
+  creationIndex: String
+  element: BookElement!
+}
+
+enum BookProcessRecordType {
+  DoCreate
+  DoUpdate
+  DoDelete
+}
+
+type BookPageMeta {
+  itemId: String
+  isNoCover: Boolean
+  background: String
+}
+
+type BookPage {
+  _id: String
+  name: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  externalPdfId: String
+  brandingPdfTemplateId: String
+  gridStateParams: String
+  screenshot: String
+  lastScreenUpdateDate: DateTime
+  pageWidth: Float
+  pageHeight: Float
+  embeddedPageImage: String
+  embeddedPageScreenshot: String
+  type: String
+  isHide: Boolean
+  meta: BookPageMeta
+  index: Float
+  isDefault: Boolean
+  elements: [BookElement!]
+  size: BookPageSize
+  orientation: BookOrientation
+}
+
+enum BookPageSize {
+  Letter
+  Tabloid
+  A4
+  A5
+  Size16x9
+}
+
+enum BookOrientation {
+  Landscape
+  Portrait
+}
+
+type BookGridSettings {
+  isGridEnable: Boolean
+  isRulerEnable: Boolean
+  gridSize: Float
+  snapToGrid: Boolean
+  gridOnTop: Boolean
+  gridColor: String
+}
+
+type Book {
+  _id: String
+  name: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  projectId: String
+  type: String
+  size: BookPageSize
+  orientation: BookOrientation
+  screenshot: String
+  themeId: String
+  orgId: String
+  serverId: String
+  description: String
+  system: String
+  gridSettings: BookGridSettings
+  pagesMode: String
+  pages: [BookPage!]
+  isHidePages: Boolean
+}
+
+type History {
+  createdDate: DateTime!
+  createdById: String!
+  createdByName: String!
+  orgId: String!
+  orgName: String!
+  _id: String
+  targetId: String!
+  model: String!
+  collectionName: String!
+  operationType: String!
+  type: String!
+  changes: [HistoryChanges!]
+}
+
+type HistoryChanges {
+  field: String!
+  newValue: String
+  oldValue: String
+}
+
+type PageLayoutSlot {
+  _id: String
+  pageLayoutId: String
+}
+
+type BookLayout {
+  _id: String
+  name: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  description: String
+  size: BookPageSize
+  orientation: BookOrientation
+  pageSlots: [PageLayoutSlot!]
+}
+
+type PageLayout {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  name: String
+  isDefault: Boolean
+  type: String
+  screenshot: String
+  lastScreenUpdateDate: DateTime
+  meta: BookPageMeta
+  elements: [BookElement!]
+  size: BookPageSize
+  orientation: BookOrientation
+}
+
+type Theme {
+  _id: String
+  name: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  isDefault: Boolean
+  description: String
+  screenshot: String
+  orgId: String
+  serverId: String
+  elements: [BookElement!]
+  pageLayouts: [PageLayout!]
+  bookLayouts: [BookLayout!]
+  gridSettings: BookGridSettings
+  defaultSize: BookPageSize
+  defaultOrientation: BookOrientation
+}
+
+type CropperData {
+  x1: Float!
+  y1: Float!
+  x2: Float!
+  y2: Float!
+  rotation: Int!
+}
+
+type Pagination {
+  size: Int!
+  page: Int!
+  total: Int!
+  allPages: Int
+}
+
+type Content {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  archived: Boolean!
+  archivedById: String
+  archivedDate: DateTime
+  name: String
+  projectId: String
+  projectOrgId: String
+  projectOrgCode: String
+  status: ContentStatus
+  visibility: ContentVisibility!
+  mimeType: String!
+  folderId: String
+  folderParent: String
+  parentId: String
+  parentType: String
+  fileName: String!
+  bookId: String
+  documentType: String
+  format: String
+  size: Float!
+  width: Float
+  height: Float
+  option: String
+  eTag: String
+  stage: String
+  uri: String
+  appliedCropperStamp: String
+  originalUrl: String
+  url: String
+  thumbnailUrl: String
+}
+
+enum ContentStatus {
+  PROCESSING
+  READY
+  FAIL
+}
+
+enum ContentVisibility {
+  PUBLIC
+  PRIVATE
+}
+
+type ContentCropper {
+  stamp: String
+  cropperData: CropperData
+  url: String
+  thumbnailUrl: String
+}
+
+type ContentUnionValue {
+  content: Content
+  cropper: ContentCropper
+}
+
+type ContentFolderCount {
+  alias: String
+  count: Int
+}
+
+type GetContentResponse {
+  contents: [Content!]!
+  pagination: Pagination!
+}
+
+type ParserText {
+  entries: [ParserTextEntry!]!
+}
+
+type ParserTextEntry {
+  page_unique: String
+  text: String
+  x1: Float
+  y1: Float
+  x2: Float
+  y2: Float
+  w: Float
+  h: Float
+  rotation: Float
+  font: String
+  ocr: Boolean
+  confidence: Float
+  order: Float
+  versionId: String
+  pageId: String
+  pageName: String
+}
+
+type PdfRequest {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  projectId: String
+  versionId: String
+  planId: String
+  bookId: String
+  bookType: BookType
+  settings: String
+  itemId: String
+  orgCode: String
+  type: PdfRequestType
+  index: Float
+  attempts: Float
+  status: PdfRequestStatus
+  detectorReadyTimestamp: DateTime
+  detectorStamp: String
+  name: String
+  errorMessage: String
+  warningMessage: String
+  totalPages: Float
+  readyPages: Float
+  readyTimestamp: DateTime
+  legendReadyPages: Float
+  legendReadyTimestamp: DateTime
+  legendStamp: String
+  isNotReadyLegend: Boolean
+  isNotReadyThumbnail: Boolean
+  md5: String
+  progress: Float
+  s3uri: String
+  s3uriParsedText: String
+  system: String
+  useAttachPlaceholder: Boolean
+  useOCR: Boolean
+  pdfType: String
+  pdfParams: String
+  sfId: String
+  sfVersionId: String
+  sfPlanId: String
+}
+
+enum BookType {
+  design
+  spec
+}
+
+enum PdfRequestType {
+  EMBEDDED
+  PARSER
+  TEXT
+  RENDER
+}
+
+enum PdfRequestStatus {
+  INIT
+  IN_PROGRESS
+  SUCCESS
+  READY_WITH_WARNING
+  FAIL
+}
+
+type PlanItem {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  planId: String!
+  plan: Plan
+  versionId: String!
+  version: PlanVersion
+  unique: String
+  imageKey: String
+  thumbnailKey: String
+  legendKey: String
+  screenshot: String
+  titleLabel: String
+  titleNumber: String
+  pageNum: Float
+  sortOrder: Float
+  order: Float
+  scale: Float
+  dpi: Float
+  cropBoxWidth: Float
+  cropBoxHeight: Float
+  system: String
+  isHide: Boolean
+  name: String
+  category: String
+  secondCategory: String
+  sfId: String
+  sfVersionId: String
+  sfPlanId: String
+  sfUnique: String
+}
+
+type Plan {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  projectId: String!
+  type: String!
+  sfId: String
+}
+
+type RectangleData {
+  x1: Float!
+  y1: Float!
+  x2: Float!
+  y2: Float!
+}
+
+type PlanVersion {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  planId: String!
+  plan: Plan
+  projectId: String!
+  isCurrent: Boolean!
+  index: Float
+  legend: RectangleData
+  detector: RectangleData
+  status: VersionStatuses
+  errorMessage: String
+  totalPages: Float
+  readyPages: Float
+  legendReadyPages: Float
+  hasReadyDetector: Boolean
+  hasReadyOCR: Boolean
+  progress: Float
+  useOCR: Boolean
+  recentlyUploadedPdfRequestId: String
+  sfId: String
+  sfPlanId: String
+  sfRecentlyUploadedPdfRequestId: String
+}
+
+enum VersionStatuses {
+  INIT
+  IN_PROGRESS
+  SUCCESS
+  READY_WITH_WARNING
+  FAIL
+}
+
+type VersionStatusResponse {
+  scenePlanItemId: String
+  isPageDetectorLaunched: Boolean
+  isPageDetectorReady: Boolean
+  isPartiallyReady: Boolean
+  isAddingLaunched: Boolean
+  version: PlanVersion
+}
+
+type Construction {
+  createdDate: DateTime!
+  createdById: String!
+  lastModifiedDate: DateTime!
+  lastModifiedById: String!
+  serverId: String
+  orgId: String!
+  _id: String
+  planItemId: String!
+  projectId: String!
+  finishId: String
+  color: String
+  meta: ConstructionMeta
+  elevation: ConstructionElevations
+  type: ConstructionTypes
+  areaInPX: Float
+  perimeterLengthInPX: Float
+  area: Float
+  perimeterLength: Float
+  spaceId: String
+  secondSpaceId: String
+  customScale: Float
+  measurementNumber: Float
+  baseHeight: Float
+  sfId: String
+  sfPlanItemId: String
+  sfFinishId: String
+  sfSpaceId: String
+  sfSecondSpaceId: String
+}
+
+enum ConstructionTypes {
+  Polygon
+  Line
+  Text
+  Dimension
+  Scale
+  Pin
+  Count
+  Elevation
+  Design
+  Wall
+}
+
+type Room {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  isDeleted: Boolean
+  projectId: String!
+  type: String!
+  typeCategory: String!
+  customType: String
+  number: Float
+  description: String
+  clarification: String
+  isDefault: Boolean
+  isOther: Boolean
+  sfId: String
+}
+
+type Space {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  isDeleted: Boolean
+  type: String!
+  roomId: String
+  customType: String
+  number: String
+  description: String
+  clarification: String
+  isDefault: Boolean
+  isMain: Boolean
+  isOther: Boolean
+  sfId: String
+  sfRoomId: String
+}
+
+type FinishIdSpecification {
+  fieldName: String!
+  fieldLabel: String!
+  dataType: EntityFieldDataType!
+  fieldValue: String!
+}
+
+enum EntityFieldDataType {
+  category
+  checkbox
+  radio
+  period
+  dimension
+  multiPicklist
+  negationMultiPicklist
+  numeric
+  picklist
+  reference
+  subType
+  text
+  type
+  url
+}
+
+type FinishIdOption {
+  itemId: String!
+  isFavorite: Boolean!
+}
+
+type FinishId {
+  _id: String!
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  isDeleted: Boolean
+  projectId: String
+  division: String
+  type: String
+  subtype: String
+  category: String
+  itemId: String
+  color: String
+  lastItemUpdateDate: DateTime
+  remarks: String
+  keyLabel: String
+  index: Float
+  wastage: Float
+  itemNotes: String
+  unitOfMeasure: FinishIdEOM
+  status: FinishIdStatus
+  options: [FinishIdOption!]
+  specifications: [FinishIdSpecification!]
+  mongoId: String
+}
+
+enum FinishIdEOM {
+  LNFT
+  SQFT
+  CUFT
+  EACH
+  EA
+}
+
+enum FinishIdStatus {
+  ITEM_SELECTED
+  NO_ITEM_SELECTED
+  PENDING_APPROVAL
+  ITEM_APPROVED
+  ITEM_REJECTED
+}
+
+type Finish {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  isDeleted: Boolean
+  spaceId: String!
+  roomId: String!
+  category: String
+  division: String
+  type: String
+  subtype: String
+  netQuantity: Float
+  grossQuantity: Float
+  planQuantity: Float
+  clarification: String
+  groupId: String!
+  status: String
+  unitOfMeasure: FinishEOM
+  elevation: ConstructionElevations
+  typeOfComplex: ComplexTypes
+  areaNote: String
+  notes: String
+  installationNotes: String
+  constructionId: String
+  textureId: String
+  direction: Float
+  wastage: Float
+  containerQuantity: Float
+  measurementNumber: Float
+  projectFinishId: String
+  projectFinish: Space
+  space: Space
+  sfId: String
+  sfRoomId: String
+  sfSpaceId: String
+  sfGroupId: String
+  sfConstructionId: String
+  mongoProjectFinishId: String
+}
+
+enum FinishEOM {
+  LNFT
+  SQFT
+  CUFT
+  EACH
+  EA
+}
+
+enum ComplexTypes {
+  Top
+  Right
+  Bottom
+  Left
+  Back
+  Trim_Top
+  Trim_Right
+  Trim_Bottom
+  Trim_Left
+  Shelf_first
+  Shelf_second
+  Shelf_third
+}
+
+type UpdateConstructionsResponse {
+  constructions: [Construction!]!
+  finishes: [Finish!]!
+}
+
+type GetConstructionDetailsResponse {
+  construction: Construction
+  planItem: PlanItem
+}
+
+type CheckDeleteFinishIdResponse {
+  booksItems: [CheckDeleteFinishIdOption!]!
+  hasReferences: Boolean!
+  typeText: String!
+}
+
+type CheckDeleteFinishIdOption {
+  name: String!
+  url: String!
+}
+
+type GetPlansResponse {
+  plans: [Plan!]!
+  versions: [PlanVersion!]!
+  items: [PlanItem!]!
+  requests: [PdfRequest!]!
+  isNeedProcessingCheckup: Boolean!
+}
+
+type GetPinDataResponse {
+  planItems: [PlanItem!]!
+  s3ParsedTextKey: String
+}
+
+type UpdatePlanItemResponse {
+  planItem: PlanItem!
+}
+
+type CreatePlanResponse {
+  versionId: String!
+}
+
+type GetProjectInfoResponse {
+  bookCount: Float!
+  bookUpdated: DateTime
+  areaCount: Float!
+  areaUpdated: DateTime
+  constuctionCount: Float!
+  constuctionUpdated: DateTime
+  roomCount: Float!
+  spaceCount: Float!
+  roomSpaceUpdated: DateTime
+}
+
+type Folder {
+  createdDate: DateTime!
+  createdById: String!
+  lastModifiedDate: DateTime!
+  lastModifiedById: String!
+  serverId: String
+  orgId: String!
+  _id: String
+  name: String!
+  type: FolderType!
+}
+
+enum FolderType {
+  Images
+  Logos
+  Snippets
+}
+
+type Texture {
+  createdDate: DateTime!
+  createdById: String!
+  lastModifiedDate: DateTime!
+  lastModifiedById: String!
+  serverId: String
+  orgId: String!
+  _id: String
+  name: String
+  division: String
+  location: String
+  isGlobal: Boolean!
+}
+
+type Tag {
+  createdDate: DateTime
+  createdById: String
+  lastModifiedDate: DateTime
+  lastModifiedById: String
+  serverId: String
+  orgId: String
+  _id: String
+  name: String!
+  type: TagType!
+  color: String
+  isColor: Boolean
+  isFavorite: Boolean
+  assigned: [String!]!
+}
+
+enum TagType {
+  Content
+}
+
+type RoomTypesModel {
+  categories: [RoomCategory!]!
+}
+
+type RoomCategory {
+  name: String!
+  types: [RoomType!]!
+}
+
+type RoomType {
+  name: String!
+  spaceTypes: [SpaceType!]!
+}
+
+type SpaceType {
+  name: String!
+}
+
+type RoomSpaceResponse {
+  rooms: [Room!]!
+  spaces: [Space!]!
+  roomTypesModel: RoomTypesModel!
+}
+
+type UpsertRoomSpaceResponse {
+  room: Room!
+  spaces: [Space!]!
+}
+
+type DeleteFinishesResponse {
+  plansItems: [CheckDeleteFinishOrAreaByIdOption!]
+  booksItems: [CheckDeleteFinishOrAreaByIdOption!]
+  hasReferences: Boolean!
+  typeText: String
+}
+
+type CheckDeleteFinishOrAreaByIdOption {
+  name: String!
+  url: String!
+}
+
+input PointInput {
+  x: Float!
+  y: Float!
+}
+
+input LineInput {
+  pS: PointInput!
+  pF: PointInput!
+}
+
+input ConstructionMetaInput {
+  points: [PointInput!]
+  color: String
+  size: Float
+  opacity: String
+  symbol: SymbolType
+  label: String
+  font: Float
+  type: PolygonType
+  elevations: [ElevationVisionMetaInput!]
+  detailsMeta: [ConstructionDetailsMetaInput!]
+  rotation: Float
+  screenshots: [ScreenShotModelInput!]
+  highlighted: [[PointInput!]!]
+  jump: [Float!]
+  buttonIsJump: Boolean
+  targetPageId: String
+  agileHorizon: AgileHorizonType
+  agileVertical: AgileVerticalType
+  mountHead: MountHeadType
+  degrees: Float
+  height: Float
+  width: Float
+  curb: Float
+  name: String
+  threshold: ThresholdType
+  wallToHorizon: AgileHorizonType
+  trims: [TrimTypes!]
+  shelves: [ShelfInput!]
+  cuts: [CutInput!]
+  scale: Float
+  rounded: Boolean
+  measurePoint: MeasurePoint
+  wallToVertical: AgileVerticalType
+  base: LineInput
+  depth: Float
+  spaceId: String
+  index: Float
+  elevation: ConstructionElevations
+  tempTypeOpening: String
+}
+
+input ShelfInput {
+  top: Float
+  index: Float
+}
+
+input CutInput {
+  points: [PointInput!]
+  type: PolygonType
+}
+
+input ScreenShotModelInput {
+  url: String
+  elevation: ConstructionElevations
+}
+
+input ElevationVisionMetaInput {
+  planId: String
+  points: [PointInput!]
+  type: ConstructionElevations
+  clarification: String
+  slope: SlopeVisionType
+  height: Float
+  heightSecond: Float
+  heightCentral: Float
+  widthCentral: Float
+}
+
+input ConstructionDetailsMetaInput {
+  id: String
+  type: ConstructionDetailsTypes
+  points: [PointInput!]
+  noteText: String
+  notePoint: PointInput
+  stage: String
+  editBtn: [PointInput!]
+  scaleLevel: Float
+}
+
+input BookImageMetaInput {
+  points: [PointInput!]
+  template: String = null
+  absoluteScaleX: Float
+  absoluteScaleY: Float
+  index: Float
+  shapeSize: Float = 0
+  x: Float
+  y: Float
+  cropX: Float
+  cropY: Float
+  cropHeight: Float
+  cropWidth: Float
+  originalWidth: Float
+  originalHeight: Float
+  direction: TextDirection
+  isDefaultImage: Boolean
+  isCropped: Boolean
+  borderRadiusEnabled: Boolean = false
+  listening: Boolean
+  draggable: Boolean
+  borderEnabled: Boolean = false
+  shadowOpacity: Float = 100
+  shadowEnabled: Boolean = false
+  shadowColor: String = "#000000"
+  shadowOffsetY: Float = 0
+  shadowOffsetX: Float = 0
+  shadowBlur: Float = 0
+  isScaleX: Boolean
+  isScaleY: Boolean
+  imageOpacity: Float
+  imageBrightness: Float
+  imageContrast: Float
+  imageSaturation: Float
+  imageScaleMode: String
+  imageBorderStyle: String = "solid"
+  imageBorderColor: String = "#000"
+  imageBorderWidth: Float = 0
+  imageBorderRadius: Float = 0
+  angle: Float
+  width: Float
+  height: Float
+  backFront: ImageFormatArrange
+  downUp: ImageFormatArrange
+  horizontalAlign: String = null
+  verticalAlign: String = null
+  lockProportions: Boolean = false
+  groups: [DragBoxGroupInput!]
+}
+
+input HoverRectAttrsInput {
+  width: Float
+  height: Float
+  x: Float
+  y: Float
+}
+
+input OriginalTextDataInput {
+  insert: String
+  delete: Float
+  retain: Float
+  attributes: TextAttributesInput
+}
+
+input TextAttributesInput {
+  font: String
+  size: String
+  bold: Boolean
+  italic: Boolean
+  color: String
+  underline: Boolean
+  align: String
+}
+
+input TextDataInput {
+  insert: [String!]
+  delete: Float
+  retain: Float
+  attributes: TextAttributesInput
+}
+
+input BookItemOptionMetaInput {
+  size: Float
+  weight: Boolean
+  isStyle: Boolean
+  underline: Boolean
+  direction: TextDirection
+  font: String
+  fontWeight: String
+  fontStyle: String
+  color: String
+  text: String
+  width: Float
+  height: Float
+  placeholder: String
+  lineHeight: Float
+  draggable: Boolean
+  name: String
+  ellipsis: Boolean
+  wrap: String
+  angle: Float
+  offsetY: Float
+  isScaleX: Boolean
+  isScaleY: Boolean
+  backFront: ImageFormatArrange
+  downUp: ImageFormatArrange
+  horizontalAlign: String
+  verticalAlign: String
+  isHugContent: Boolean
+  isTruncate: Boolean
+  listening: Boolean = true
+  align: String
+  pdfX: Float = 0
+  points: [PointInput!]
+  uppercase: Boolean
+  type: BookItemOptionType
+}
+
+input BookItemOptionInput {
+  isChecked: Boolean
+  label: String
+  value: String
+  type: BookItemOptionType
+  meta: BookItemOptionMetaInput
+  layoutItemId: String
+  field: String
+}
+
+input BookElementMetaInput {
+  size: Float
+  weight: Boolean
+  isStyle: Boolean
+  underline: Boolean
+  hoverRectAttrs: HoverRectAttrsInput
+  direction: TextDirection
+  font: String
+  fontWeight: String
+  fontStyle: String
+  color: String
+  text: String
+  width: Float
+  height: Float = 1270
+  placeholder: String
+  lineHeight: Float
+  draggable: Boolean
+  textData: [TextDataInput!]
+  originalTextData: [OriginalTextDataInput!]
+  isHugContent: Boolean
+  isTruncate: Boolean
+  horizontalAlign: String = null
+  verticalAlign: String = null
+  angle: Float = 0
+  isScaleX: Boolean = false
+  isScaleY: Boolean = false
+  dynamicComponentType: DynamicComponentType
+  points: [PointInput!]
+  tailPoints: [PointInput!]
+  visible: Boolean
+  isPlaceholder: Boolean
+  theme: String
+  itemStyleMeta: BookElementMetaInput
+  marginLeft: Float
+  marginRight: Float
+  shapeSize: Float = 0
+  id: String
+  isDefaultImage: Boolean
+  index: Float = 0
+  pdfWidth: Float
+  pdfX: Float = 0
+  highlighterWeight: Float = 20
+  offsetY: Float
+  x: Float = 0
+  y: Float = 0
+  template: String = null
+  name: String
+  backFront: ImageFormatArrange
+  downUp: ImageFormatArrange
+  lockProportions: Boolean = false
+  sides: Float = 3
+  colorOpacity: Float = 100
+  imageBorderStyle: String = "solid"
+  imageBorderColor: String = "#000"
+  imageBorderWidth: Float = 0
+  imageBorderRadius: Float = 0
+  borderEnabled: Boolean = false
+  borderRadiusEnabled: Boolean = false
+  shadowColor: String = "#000000"
+  shadowOffsetY: Float = 0
+  shadowOffsetX: Float = 0
+  shadowBlur: Float = 0
+  shadowOpacity: Float = 100
+  shadowEnabled: Boolean = false
+  fill: String = "#d9d9d9"
+  fillOpacity: Float = 100
+  imageOpacity: Float
+  imageBrightness: Float
+  imageContrast: Float
+  imageSaturation: Float
+  imageScaleMode: String
+  isCropped: Boolean
+  originalWidth: Float
+  originalHeight: Float
+  cropX: Float
+  cropY: Float
+  cropHeight: Float
+  cropWidth: Float
+  absoluteScaleX: Float
+  absoluteScaleY: Float
+  itemTitle: BookItemOptionInput
+  groups: [DragBoxGroupInput!]
+  widthText: Float
+  imageMeta: BookImageMetaInput
+  align: String
+  options: [BookItemOptionInput!]
+  cropperData: String
+  length: Float
+  startCap: String
+  endCap: String
+  dash: [Float!]
+  wrap: String
+  style: String
+  ellipsis: Boolean
+  listening: Boolean = true
+  borderStyle: String
+  dragInnerHTML: String
+  borderColor: String
+  borderWidth: Float
+  weightTool: Boolean
+  styleTool: Boolean
+  underlineTool: Boolean
+  linesWidth: [Float!]
+  attributes: [AttributeTextTemplateInput!]
+  countLines: Float
+  distanceHeight: Float
+}
+
+input AttributeTextTemplateInput {
+  size: Float
+  weight: Boolean
+  isStyle: Boolean
+  underline: Boolean
+  direction: TextDirection
+  font: String
+  color: String
+  fontWeight: String
+  lineHeight: Float
+  align: String
+  id: AttributesGroupElement!
+  text: String!
+  realData: [String!]
+  templateId: String
+  visible: Boolean
+  marginLeft: Float
+  marginRight: Float
+}
+
+input BookElementInput {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  index: Float
+  template: String
+  name: String
+  projectFinishId: String
+  finishId: String
+  type: String
+  imageId: String
+  imageUrl: String
+  location: String
+  elementGroup: String
+  groupId: String
+  meta: BookElementMetaInput
+  system: String
+  isDefault: Boolean
+  isSystem: Boolean
+  screenshot: String
+  lastScreenUpdateDate: DateTime
+  orgId: String
+  serverId: String
+  objectId: String
+}
+
+input ItemBoxElementInput {
+  id: Float
+  meta: BookElementMetaInput
+  type: BookPageElementTypes
+  order: Float
+}
+
+input DragBoxGroupInput {
+  id: Float
+  padding: Float
+  alignmentVertical: VerticalAligns
+  alignmentHorizontal: HorizontalAligns
+  position: PositionEnum
+  elements: [ItemBoxElementInput!]
+}
+
+input ProcessRecordInput {
+  type: BookProcessRecordType!
+  pageId: String!
+  creationIndex: String
+  element: BookElementInput!
+}
+
+input BookPageMetaInput {
+  itemId: String
+  isNoCover: Boolean
+  background: String
+}
+
+input BookGridSettingsInput {
+  isGridEnable: Boolean
+  isRulerEnable: Boolean
+  gridSize: Float
+  snapToGrid: Boolean
+  gridOnTop: Boolean
+  gridColor: String
+}
+
+input PageLayoutSlotInput {
+  _id: String
+  pageLayoutId: String
+}
+
+input PlanBaseInput {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  projectId: String!
+  type: String!
+  sfId: String
+}
+
+input RectangleDataInput {
+  x1: Float!
+  y1: Float!
+  x2: Float!
+  y2: Float!
+}
+
+input PlanVersionBaseInput {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  planId: String!
+  plan: PlanBaseInput
+  projectId: String!
+  isCurrent: Boolean!
+  index: Float
+  legend: RectangleDataInput
+  detector: RectangleDataInput
+  status: VersionStatuses
+  errorMessage: String
+  totalPages: Float
+  readyPages: Float
+  legendReadyPages: Float
+  hasReadyDetector: Boolean
+  hasReadyOCR: Boolean
+  progress: Float
+  useOCR: Boolean
+  recentlyUploadedPdfRequestId: String
+  sfId: String
+  sfPlanId: String
+  sfRecentlyUploadedPdfRequestId: String
+}
+
+input ConstructionInput {
+  createdDate: DateTime
+  createdById: String
+  lastModifiedDate: DateTime
+  lastModifiedById: String
+  serverId: String
+  orgId: String
+  _id: String
+  planItemId: String
+  projectId: String
+  finishId: String
+  color: String
+  meta: ConstructionMetaInput
+  elevation: ConstructionElevations
+  type: ConstructionTypes
+  areaInPX: Float
+  perimeterLengthInPX: Float
+  area: Float
+  perimeterLength: Float
+  spaceId: String
+  secondSpaceId: String
+  customScale: Float
+  measurementNumber: Float
+  baseHeight: Float
+  sfId: String
+  sfPlanItemId: String
+  sfFinishId: String
+  sfSpaceId: String
+  sfSecondSpaceId: String
+}
+
+input CreateRoomInput {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  isDeleted: Boolean
+  projectId: String!
+  type: String!
+  typeCategory: String!
+  customType: String
+  number: Float
+  description: String
+  clarification: String
+  isDefault: Boolean
+  isOther: Boolean
+  sfId: String
+}
+
+input CreateSpaceInput {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  isDeleted: Boolean
+  type: String!
+  roomId: String
+  customType: String
+  number: String
+  description: String
+  clarification: String
+  isDefault: Boolean
+  isMain: Boolean
+  isOther: Boolean
+  sfId: String
+  sfRoomId: String
+}
+
+input FinishIdSpecificationInput {
+  fieldName: String!
+  fieldLabel: String!
+  dataType: EntityFieldDataType!
+  fieldValue: String!
+}
+
+input FinishIdOptionInput {
+  itemId: String!
+  isFavorite: Boolean!
+}
+
+input UpdateFinishIdInput {
+  _id: String!
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  isDeleted: Boolean
+  projectId: String
+  division: String
+  type: String
+  subtype: String
+  category: String
+  itemId: String
+  color: String
+  lastItemUpdateDate: DateTime
+  remarks: String
+  keyLabel: String
+  index: Float
+  wastage: Float
+  itemNotes: String
+  unitOfMeasure: FinishIdEOM
+  status: FinishIdStatus
+  options: [FinishIdOptionInput!]
+  specifications: [FinishIdSpecificationInput!]
+  mongoId: String
+}
+
+input FinishInput {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  isDeleted: Boolean
+  spaceId: String
+  roomId: String
+  category: String
+  division: String
+  type: String
+  subtype: String
+  netQuantity: Float
+  grossQuantity: Float
+  planQuantity: Float
+  clarification: String
+  groupId: String
+  status: String
+  unitOfMeasure: FinishEOM
+  elevation: ConstructionElevations
+  typeOfComplex: ComplexTypes
+  areaNote: String
+  notes: String
+  installationNotes: String
+  constructionId: String
+  textureId: String
+  direction: Float
+  wastage: Float
+  containerQuantity: Float
+  measurementNumber: Float
+  projectFinishId: String
+  projectFinish: CreateSpaceInput
+  space: CreateSpaceInput
+  sfId: String
+  sfRoomId: String
+  sfSpaceId: String
+  sfGroupId: String
+  sfConstructionId: String
+  mongoProjectFinishId: String
+}
+
+input FolderInput {
+  createdDate: DateTime!
+  createdById: String!
+  lastModifiedDate: DateTime!
+  lastModifiedById: String!
+  serverId: String
+  orgId: String!
+  _id: String
+  name: String!
+  type: FolderType!
+}
+
+input TextureInput {
+  createdDate: DateTime!
+  createdById: String!
+  lastModifiedDate: DateTime!
+  lastModifiedById: String!
+  serverId: String
+  orgId: String!
+  _id: String
+  name: String
+  division: String
+  location: String
+  isGlobal: Boolean!
+}
+
+input TagInput {
+  createdDate: DateTime
+  createdById: String
+  lastModifiedDate: DateTime
+  lastModifiedById: String
+  serverId: String
+  orgId: String
+  _id: String
+  name: String!
+  type: TagType!
+  color: String
+  isColor: Boolean
+  isFavorite: Boolean
+  assigned: [String!]!
+}
+
+type Query {
+  content(id: String!): Content
+
+  """
+  Get search contents from user company. If the projectId parameter is specified, then the search occurs with sharing rules
+  """
+  contents(args: ContentSearchArgs!): GetContentResponse
+  contentsByIds(ids: [String!]!): [Content!]
+  contentFolderCounts(projectId: String, folderIds: [String!]!): [ContentFolderCount!]
+
+  """Get cropper data using existing image url"""
+  contentCropperByUrl(url: String!): ContentUnionValue
+  selectParserText(args: SelectParserTextInput!): ParserText!
+  finishes(projectId: String!): [Finish!]!
+  roomsAndSpaces(projectId: String!, projectType: ProjectType): RoomSpaceResponse!
+  textures: [Texture!]!
+  tags(type: String): [Tag!]!
+  folders(projectId: String): [Folder!]!
+  pdfRequest(id: String!): PdfRequest
+  finishIds(projectId: String!): [FinishId!]!
+  finishIdsById(ids: [String!]!): [FinishId!]!
+  finishIdHistories(ids: [String!]!): [History!]!
+  books(projectId: String!): [Book!]!
+  book(id: String!): Book!
+  bookPageElements(id: String!): [BookElement!]!
+  themes: [Theme!]!
+  systemThemes: [Theme!]!
+  theme(id: String!): Theme!
+  plans(projectId: String!): GetPlansResponse!
+  getPinData(projectId: String!): GetPinDataResponse!
+  versionProcessingReview(versionId: String!): VersionStatusResponse!
+  constructions(projectId: String!): [Construction!]!
+  getConstructionDetails(finishId: String!): GetConstructionDetailsResponse!
+  projectInfo(id: String!): GetProjectInfoResponse!
+}
+
+input ContentSearchArgs {
+  search: String
+  projectId: String
+  bookId: String
+  folderIds: [String!]
+  folderParent: String
+  pagination: PaginationInput
+  mode: ContentSearchModifier! = STANDARD_MODE
+  ownerFilter: ContentOwnerFilter! = ALL
+}
+
+input PaginationInput {
+  size: Int!
+  page: Int!
+  total: Int!
+  allPages: Int
+}
+
+enum ContentSearchModifier {
+  STANDARD_MODE
+  DOCUMENTS_MODE
+  IMAGES_MODE
+}
+
+enum ContentOwnerFilter {
+  ALL
+  MY
+}
+
+input SelectParserTextInput {
+  key: String
+  phrases: [String!]
+  x1: Float
+  x2: Float
+  y1: Float
+  y2: Float
+}
+
+enum ProjectType {
+  Residential
+  Commercial
+}
+
+type Mutation {
+  migrate(rooms: [CreateRoomInput!]!, spaces: [CreateSpaceInput!]!, finishes: [FinishInput!]!, plans: [PlanInput!]!, planItems: [PlanItemInput!]!, planVersions: [PlanVersionInput!]!, pdfRequests: [PdfRequestInput!]!, constructions: [ConstructionInput!]!): Boolean!
+  removeDuplicates: Boolean!
+  archiveContents(ids: [String!]!): [String!]
+  deleteContents(ids: [String!]!): [String!]
+  uploadContents(args: ContentUploadArgs!): [Content!]
+  uploadCropperContent(args: CropperContentUploadArgs!): ContentUnionValue
+  updateContent(args: ContentUpdateArgs!): Content
+  createFinishes(finishes: [FinishInput!]!, projectId: String!): [Finish!]!
+  updateFinishes(finishes: [FinishInput!]!): [Finish!]!
+  deleteFinishes(finishes: [FinishInput!]!): DeleteFinishesResponse!
+  setFinishId(finishes: [String!]!, finishId: String): [Finish!]!
+  createRoomAndSpaces(room: CreateRoomInput!, spaces: [CreateSpaceInput!]!): UpsertRoomSpaceResponse!
+  createDefaultRoomAndSpace(projectId: String!): UpsertRoomSpaceResponse!
+  updateRoomAndSpaces(room: UpdateRoomInput!, spaces: [UpdateSpaceInput!]!): UpsertRoomSpaceResponse!
+  deleteSpace(id: String!): Boolean!
+  deleteRoom(id: String!): Boolean!
+  createTexture(division: String, location: String!, isGlobal: Boolean!): [Texture!]!
+  createTags(tags: [TagInput!]): [Tag!]!
+  updateTags(tags: [TagInput!]): [Tag!]!
+  createBookPdf(projectId: String!, bookId: String!, name: String!, settings: String): PdfRequest!
+  retryDocument(id: String!): PdfRequest
+  createFinishId(projectId: String!, division: String!, category: String, type: String, subtype: String, itemId: String, key: String, uom: String, wastage: Float): FinishId!
+  updateFinishIds(finishIds: [UpdateFinishIdInput!]!): [FinishId!]!
+  deleteFinishId(id: String!): CheckDeleteFinishIdResponse!
+  createBook(
+    book: BookInput!
+    pages: [BookPageInput!]
+
+    """Index by pages"""
+    headers: [BookElementInput!]
+
+    """Index by pages"""
+    elements: [[BookElementInput!]!]
+  ): Book!
+  updateBook(book: BookInput!): Book!
+  deleteBook(id: String!): String!
+  createBookPages(pages: [BookPageInput!]!, headers: [BookElementInput!], bookId: String!, previousPageId: String): [BookPage!]!
+  createGroupedBookPages(bookId: String!, groupedPages: [PageGroup!]): [BookPage!]!
+  duplicateBookPage(bookId: String!, pageId: String!, pageName: String): BookPage!
+  moveBookPage(bookId: String!, pageId: String!, previousPageId: String!): Boolean!
+  updateBookPage(page: BookPageInput!, bookId: String!): BookPage!
+  updateBookPages(pages: [BookPageInput!]!, bookId: String!): [BookPage!]!
+  deleteBookPage(bookId: String!, pageId: String!): String!
+  processRecords(records: [ProcessRecordInput!]!): [ProcessRecord!]!
+  incrementPageSessions(pageId: String!): Boolean!
+  decrementPageSessions(pageId: String!): Boolean!
+  createTheme(theme: ThemeInput!, pageLayouts: [PageLayoutInput!]!): Theme!
+  updateTheme(theme: ThemeInput!): Theme!
+  duplicateTheme(id: String!, name: String, description: String): Theme!
+  markThemeAsDefault(themeId: String!): Boolean!
+  deleteTheme(id: String!): Boolean!
+  addThemeElements(themeId: String!, elements: [BookElementInput!]!): [BookElement!]!
+  updateThemeElement(themeId: String!, element: BookElementInput!): BookElement!
+  markThemeElementAsDefault(themeId: String!, elementId: String!): Boolean!
+  deleteThemeElement(themeId: String!, elementId: String!): Boolean!
+  createPageLayout(themeId: String!, pageLayout: PageLayoutInput!): PageLayout!
+  duplicatePageLayout(themeId: String!, pageLayoutId: String!, pageLayoutName: String!): PageLayout!
+  updatePageLayout(themeId: String!, pageLayout: PageLayoutInput!): PageLayout!
+  markPageLayoutAsDefault(themeId: String!, pageLayoutId: String!): Boolean!
+  deletePageLayout(themeId: String!, pageLayoutId: String!): Boolean!
+  createBookLayout(themeId: String!, bookLayout: BookLayoutInput!, pageLayoutIds: [String!]): BookLayout!
+  updateBookLayout(themeId: String!, bookLayout: BookLayoutInput!): Boolean!
+  duplicatePageOnBookLayout(themeId: String!, bookLayoutId: String!, pageId: String!): PageLayoutSlot!
+  movePageOnBookLayout(themeId: String!, bookLayoutId: String!, pageId: String!, previousPageId: String!): Boolean!
+  addPagesToBookLayout(themeId: String!, bookLayoutId: String!, pagesIds: [String!]!, previousPageId: String): [PageLayoutSlot!]!
+  removePageFromBookLayout(themeId: String!, bookLayoutId: String!, pageId: String!): Boolean!
+  deleteBookLayout(themeId: String!, bookLayoutId: String!): Boolean!
+  checkParserProcessing(projectId: String!): [PdfRequest!]!
+  createPlan(projectId: String!, plan: PlanInput!, version: PlanVersionInput!, contents: [ContentInput!]!): CreatePlanResponse!
+  dragPlanPage(pageIds: [String!]!): Boolean!
+  updatePlanItem(planItem: PlanItemInput!): UpdatePlanItemResponse!
+  setVersionLegend(version: PlanVersionInput!): PlanVersion!
+  updateConstructions(constructions: [ConstructionInput!]!, roundToArea: String!, roundToLine: String!): UpdateConstructionsResponse!
+  createConstructionWithFinish(items: [ConstructionWithFinishInput!]!, complexType: ComplexType, roundToArea: String!, roundToLine: String!): UpdateConstructionsResponse!
+  deleteConstructions(constructions: [ConstructionInput!]!): Boolean!
+  setWall(updateList: [ConstructionInput!]!, deleteList: [ConstructionInput!]!): [Construction!]!
+  decrementProjectConstruction(projectId: String!): Boolean!
+  pdfToProject(args: PdfToProjectArgs!): Boolean
+}
+
+input PlanInput {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  projectId: String
+  type: String
+  sfId: String
+}
+
+input PlanItemInput {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  planId: String
+  plan: PlanBaseInput
+  versionId: String
+  version: PlanVersionBaseInput
+  unique: String
+  imageKey: String
+  thumbnailKey: String
+  legendKey: String
+  screenshot: String
+  titleLabel: String
+  titleNumber: String
+  pageNum: Float
+  sortOrder: Float
+  order: Float
+  scale: Float
+  dpi: Float
+  cropBoxWidth: Float
+  cropBoxHeight: Float
+  system: String
+  isHide: Boolean
+  name: String
+  category: String
+  secondCategory: String
+  sfId: String
+  sfVersionId: String
+  sfPlanId: String
+  sfUnique: String
+}
+
+input PlanVersionInput {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  planId: String
+  plan: PlanBaseInput
+  projectId: String
+  isCurrent: Boolean
+  index: Float
+  legend: RectangleDataInput
+  detector: RectangleDataInput
+  status: VersionStatuses
+  errorMessage: String
+  totalPages: Float
+  readyPages: Float
+  legendReadyPages: Float
+  hasReadyDetector: Boolean
+  hasReadyOCR: Boolean
+  progress: Float
+  useOCR: Boolean
+  recentlyUploadedPdfRequestId: String
+  sfId: String
+  sfPlanId: String
+  sfRecentlyUploadedPdfRequestId: String
+}
+
+input PdfRequestInput {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  projectId: String
+  versionId: String
+  planId: String
+  bookId: String
+  bookType: BookType
+  settings: String
+  itemId: String
+  orgCode: String
+  type: PdfRequestType
+  index: Float
+  attempts: Float
+  status: PdfRequestStatus
+  detectorReadyTimestamp: DateTime
+  detectorStamp: String
+  name: String
+  errorMessage: String
+  warningMessage: String
+  totalPages: Float
+  readyPages: Float
+  readyTimestamp: DateTime
+  legendReadyPages: Float
+  legendReadyTimestamp: DateTime
+  legendStamp: String
+  isNotReadyLegend: Boolean
+  isNotReadyThumbnail: Boolean
+  md5: String
+  progress: Float
+  s3uri: String
+  s3uriParsedText: String
+  system: String
+  useAttachPlaceholder: Boolean
+  useOCR: Boolean
+  pdfType: String
+  pdfParams: String
+  sfId: String
+  sfVersionId: String
+  sfPlanId: String
+}
+
+input ContentUploadArgs {
+  files: [Upload!]!
+  visibility: ContentVisibility!
+  projectOrgCode: String
+  projectOrgId: String
+  projectId: String
+  folderId: String
+  folderParent: String
+  parentId: String
+  parentType: String
+  documentType: String
+  modifier: ContentDatabaseModifier! = STANDARD_MODE
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+enum ContentDatabaseModifier {
+  STANDARD_MODE
+  SCREENSHOT_MODE
+}
+
+input CropperContentUploadArgs {
+  contentId: String!
+  file: Upload!
+  cropperData: CropperDataInput!
+  applyAsDefaultContent: Boolean! = false
+}
+
+input CropperDataInput {
+  x1: Float
+  y1: Float
+  x2: Float
+  y2: Float
+  rotation: Float
+}
+
+input ContentUpdateArgs {
+  id: String
+  fileName: String
+}
+
+input UpdateRoomInput {
+  _id: String!
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  isDeleted: Boolean
+  projectId: String
+  type: String
+  typeCategory: String
+  customType: String
+  number: Float
+  description: String
+  clarification: String
+  isDefault: Boolean
+  isOther: Boolean
+  sfId: String
+}
+
+input UpdateSpaceInput {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  isDeleted: Boolean
+  type: String!
+  roomId: String
+  customType: String
+  number: String
+  description: String
+  clarification: String
+  isDefault: Boolean
+  isMain: Boolean
+  isOther: Boolean
+  sfId: String
+  sfRoomId: String
+}
+
+input BookInput {
+  _id: String
+  name: String!
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  projectId: String!
+  type: String!
+  size: BookPageSize
+  orientation: BookOrientation
+  screenshot: String
+  themeId: String
+  orgId: String
+  serverId: String
+  description: String
+  system: String
+  gridSettings: BookGridSettingsInput
+  pagesMode: String = "normal"
+  isHidePages: Boolean
+}
+
+input BookPageInput {
+  _id: String
+  name: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  externalPdfId: String
+  brandingPdfTemplateId: String
+  gridStateParams: String
+  screenshot: String
+  lastScreenUpdateDate: DateTime
+  pageWidth: Float
+  pageHeight: Float
+  embeddedPageImage: String
+  embeddedPageScreenshot: String
+  type: String
+  isHide: Boolean
+  meta: BookPageMetaInput
+  index: Float
+  isDefault: Boolean
+  size: BookPageSize
+  orientation: BookOrientation
+}
+
+input PageGroup {
+  pages: [BookPageInput!]!
+  elements: [[BookElementInput!]!]
+  previousPageId: String!
+}
+
+input ThemeInput {
+  _id: String
+  name: String!
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  isDefault: Boolean
+  description: String
+  screenshot: String
+  orgId: String
+  serverId: String
+  gridSettings: BookGridSettingsInput
+  defaultSize: BookPageSize
+  defaultOrientation: BookOrientation
+}
+
+input PageLayoutInput {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  name: String
+  isDefault: Boolean
+  type: String
+  screenshot: String
+  lastScreenUpdateDate: DateTime
+  meta: BookPageMetaInput
+  size: BookPageSize
+  orientation: BookOrientation
+}
+
+input BookLayoutInput {
+  _id: String
+  name: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  description: String
+  size: BookPageSize
+  orientation: BookOrientation
+}
+
+input ContentInput {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdById: String
+  lastModifiedById: String
+  orgId: String
+  serverId: String
+  archived: Boolean
+  archivedById: String
+  archivedDate: DateTime
+  name: String
+  projectId: String
+  projectOrgId: String
+  projectOrgCode: String
+  status: ContentStatus
+  visibility: ContentVisibility
+  mimeType: String
+  folderId: String
+  folderParent: String
+  parentId: String
+  parentType: String
+  fileName: String
+  bookId: String
+  documentType: String
+  format: String
+  size: Float
+  width: Float
+  height: Float
+  option: String
+  eTag: String
+  stage: String
+  uri: String
+  appliedCropperStamp: String
+  originalUrl: String
+  url: String
+  thumbnailUrl: String
+}
+
+input ConstructionWithFinishInput {
+  construction: ConstructionInput!
+  finish: FinishInput!
+}
+
+enum ComplexType {
+  Niche
+  Bench
+}
+
+input PdfToProjectArgs {
+  file: Upload!
+  projectId: String
+  email: String
+}

@@ -1,0 +1,54 @@
+{
+	"name": "arij",
+	"version": "1.0.0",
+	"private": true,
+	"license": "UNLICENSED",
+	"description": "Arij application",
+	"scripts": {
+		"pre": "npm run generate:permissions-enum && npm run deploy:sf-description && npm run deploy:permissions",
+		"bootstrap:client": "node scripts/bootstrap-client.js",
+		"bootstrap:catalog": "node scripts/bootstrap-catalog.js",
+		"bootstrap:arji": "node scripts/bootstrap-arji.js",
+		"deploy": "npm run generate:permissions-enum && npm run deploy:sf && npm run deploy:permissions",
+		"deploy:sf": "sfdx force:source:deploy -u dev -p \"force-app\" && npm run deploy:sf-description",
+		"deploy:sf-description": "sfdx force:org:display -u dev --json > connection.json",
+		"deploy:permissions": "node permissions/permission-connection.js",
+		"generate:permissions-enum": "node permissions/permission-enum.js",
+		"prettier": "prettier",
+		"prettier:verify": "prettier --list-different \"./**/*.{cls,trigger,js,html,css,scss,json}\"",
+		"pmd": "sfdx sfpowerkit:source:pmd --directory=force-app/design-schedule --ruleset pmd-ruleset.xml --format=text --report=pmd-report.txt",
+		"lint": "eslint --fix \"client/design-schedule/**/src/**/*.ts\" \"shared/**/src/**/*.ts\" \"server/**/src/**/*.ts\"",
+		"lint:report": "eslint --output-file eslint_report.json --format json \"**/src/**/*.ts\""
+	},
+	"devDependencies": {
+		"@angular/compiler": "13.3.11",
+		"@typescript-eslint/eslint-plugin": "5.30.3",
+		"@typescript-eslint/parser": "5.29.0",
+		"eslint": "8.18.0",
+		"eslint-config-airbnb-base": "15.0.0",
+		"eslint-config-airbnb-typescript": "17.0.0",
+		"eslint-config-prettier": "8.5.0",
+		"eslint-plugin-import": "2.26.0",
+		"eslint-plugin-prettier": "4.0.0",
+		"eslint-webpack-plugin": "3.2.0",
+		"husky": "8.0.1",
+		"lerna": "5.1.0",
+		"lint-staged": "13.0.0",
+		"prettier": "2.6.2",
+		"prettier-plugin-apex": "1.10.0",
+		"typescript": "3.8.3"
+	},
+	"lint-staged": {
+		"./**/*.{cls,trigger,js,html,css,scss,json}": [
+			"prettier --write"
+		],
+		"./shared/arji-common/**/*.ts": [
+			"prettier --write",
+			"./shared/arji-common/node_modules/.bin/eslint --fix"
+		],
+		"./server/arji-api/**/*.ts": [
+			"prettier --write",
+			"./server/arij-api/node_modules/.bin/eslint --fix"
+		]
+	}
+}

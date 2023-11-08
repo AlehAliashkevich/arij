@@ -1,0 +1,59 @@
+import { Module, NestModule } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { join } from 'path';
+import { AppController } from './app.controller';
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
+import configuration from './config/configuration';
+import { UserModule } from './user/user.module';
+import { User } from './user/entities/user.entity';
+
+@Module({
+	imports: [
+		ConfigModule.forRoot({ load: [configuration] }),
+		MongooseModule.forRootAsync({
+			imports: [ConfigModule],
+			useFactory: async (configService: ConfigService) => ({
+				uri: configService.get('MONGODB_URI'),
+				compressors: ['zstd'],
+			}),
+			inject: [ConfigService],
+		}),
+		TypeOrmModule.forRootAsync({
+			imports: [ConfigModule],
+			useFactory: (configService: ConfigService) => ({
+				type: 'postgres',
+				host: configService.get('POSTGRES_HOST'),
+				port: configService.get('POSTGRES_PORT'),
+				database: configService.get('POSTGRES_DB'),
+				username: configService.get('POSTGRES_USER'),
+				password: configService.get('POSTGRES_PASSWORD'),
+				entities: [User],
+				synchronize: true,
+				logging: [
+					// 'query',
+					'error',
+				],
+				namingStrategy: new SnakeNamingStrategy(),
+				migrations: ['dist/migrations/*.js'],
+				migrationsRun: true,
+				migrationsTableName: 'migrations',
+			}),
+			inject: [ConfigService],
+		}),
+		GraphQLModule.forRoot<ApolloDriverConfig>({
+			driver: ApolloDriver,
+			autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+			include: [
+				UserModule,
+			],
+		}),
+		UserModule,
+	],
+	controllers: [AppController],
+	providers: [],
+})
+export class AppModule implements NestModule {}

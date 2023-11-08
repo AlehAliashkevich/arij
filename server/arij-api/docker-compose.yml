@@ -1,0 +1,104 @@
+version: '3.8'
+services:
+    api:
+        build:
+            dockerfile: server/arij-api/Dockerfile
+            context: ../../
+            target: development
+        volumes:
+            - .:/usr/src/app/server/arij-api/
+            - /usr/src/app/node_modules
+            - ../../shared/:/usr/src/app/shared/
+            - /usr/src/app/server/arij-api/node_modules/
+            - ./output:/app/output
+        command: npm run start:dev --prefix server/arij-api/
+        restart: always
+        env_file:
+            - .env
+        ports:
+            - 3005:3005
+        depends_on:
+            - postgres
+            - mongo
+            - mongosetup
+        networks:
+            - app
+
+    postgres:
+        image: postgres:14.6
+        restart: always
+        environment:
+            POSTGRES_USER: test
+            POSTGRES_PASSWORD: test
+            POSTGRES_DB: arij
+        ports:
+            - 5433:5433
+        volumes:
+            - postgres:/data
+        networks:
+            - app
+
+    mongo:
+        image: mongo:6.0.6
+        restart: always
+        entrypoint: ['/usr/bin/mongod', '--bind_ip_all', '--replSet', 'rs0']
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: test
+            MONGO_INITDB_ROOT_PASSWORD: test
+            MONGO_INITDB_DATABASE: test
+        volumes:
+            - mongo:/data/db
+        ports:
+            - 27018:27018
+        networks:
+            - app
+
+    mongo-slave-1:
+        image: mongo:6.0.6
+        expose:
+            - 27018
+        restart: always
+        entrypoint: ['/usr/bin/mongod', '--bind_ip_all', '--replSet', 'rs0']
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: test
+            MONGO_INITDB_ROOT_PASSWORD: test
+            MONGO_INITDB_DATABASE: test
+        networks:
+            - app
+
+    mongo-slave-2:
+        image: mongo:6.0.6
+        expose:
+            - 27018
+        restart: always
+        entrypoint: ['/usr/bin/mongod', '--bind_ip_all', '--replSet', 'rs0']
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: test
+            MONGO_INITDB_ROOT_PASSWORD: test
+            MONGO_INITDB_DATABASE: test
+        networks:
+            - app
+
+    mongosetup:
+        image: mongo:6.0.6
+        depends_on:
+            - mongo
+            - mongo-slave-1
+            - mongo-slave-2
+        volumes:
+            - ./mongo_setup.sh:/scripts/mongo_setup.sh
+        restart: 'no'
+        entrypoint: ['bash', '/scripts/mongo_setup.sh']
+        networks:
+            - app
+
+
+volumes:
+    postgres:
+        driver: local
+    mongo:
+        driver: local
+
+networks:
+    app:
+        name: app

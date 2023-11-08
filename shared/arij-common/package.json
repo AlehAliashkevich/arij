@@ -1,0 +1,32 @@
+{
+	"name": "@arij/common",
+	"version": "1.0.0",
+	"license": "UNLICENSED",
+	"main": "lib/index.js",
+	"types": "lib/index.d.ts",
+	"typescript": {
+		"main": "./src/index.ts"
+	},
+	"scripts": {
+		"build": "tsc",
+		"prepare": "npm run build",
+		"test": "echo \"Error: run tests from root\" && exit 1",
+		"lint": "eslint --fix './src/**/*.ts'",
+		"lint:report": "eslint --output-file eslint_report.json --format json './src/**/*.ts'"
+	},
+	"devDependencies": {
+		"typescript": "4.6.4",
+		"@typescript-eslint/eslint-plugin": "5.30.3",
+		"@typescript-eslint/parser": "5.29.0",
+		"eslint": "8.18.0",
+		"eslint-config-airbnb-base": "15.0.0",
+		"eslint-config-airbnb-typescript": "17.0.0",
+		"eslint-plugin-prettier": "4.0.0",
+		"eslint-config-prettier": "8.5.0",
+		"eslint-plugin-import": "2.26.0"
+	},
+	"files": [
+		"src/**/*",
+		"lib/**/*"
+	]
+}

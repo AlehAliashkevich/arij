@@ -1,0 +1,8 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"paths": {
+			"@efficiently/books-models": ["../../shared/books-models/src"]
+		}
+	}
+}
