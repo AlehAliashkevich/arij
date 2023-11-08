@@ -5,6 +5,8 @@ import {
 	CreateDateColumn,
 	UpdateDateColumn,
 	PrimaryGeneratedColumn,
+	ManyToOne,
+	JoinColumn,
 } from 'typeorm';
 import * as models from '@arij/common';
 
@@ -24,12 +26,14 @@ export class User implements models.User<string> {
 	@UpdateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP', nullable: true })
 	public lastModifiedDate: Date;
 
-	@Field({ nullable: true })
-	@Column({ update: false })
+	@Field(() => User, { nullable: true })
+	@ManyToOne(() => User, user => user.createdBy, { onDelete: 'CASCADE' })
+	@JoinColumn({ name: 'createdBy_id' })
 	public createdBy: User;
 
-	@Field({ nullable: true })
-	@Column()
+	@Field(() => User, { nullable: true })
+	@ManyToOne(() => User, user => user.lastModifiedBy, { onDelete: 'CASCADE' })
+	@JoinColumn({ name: 'lastModifiedBy_id' })
 	public lastModifiedBy: User;
 
 	@Field({ nullable: true })

@@ -1,11 +1,11 @@
 {
 	"Servers": {
 		"1": {
-			"Name": "efficiently",
+			"Name": "arij",
 			"Group": "Servers",
 			"Host": "postgres",
-			"Port": 5432,
-			"MaintenanceDB": "efficiently",
+			"Port": 5433,
+			"MaintenanceDB": "arij",
 			"Username": "test",
 			"Password": "test",
 			"UseSSHTunnel": 0,

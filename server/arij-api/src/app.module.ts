@@ -1,4 +1,4 @@
-import { Module, NestModule } from '@nestjs/common';
+import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -27,8 +27,8 @@ import { User } from './user/entities/user.entity';
 			useFactory: (configService: ConfigService) => ({
 				type: 'postgres',
 				host: configService.get('POSTGRES_HOST'),
-				port: configService.get('POSTGRES_PORT'),
-				database: configService.get('POSTGRES_DB'),
+				port: 5432,// configService.get('POSTGRES_PORT'),
+				database: 'postgres',// configService.get('POSTGRES_DB'),
 				username: configService.get('POSTGRES_USER'),
 				password: configService.get('POSTGRES_PASSWORD'),
 				entities: [User],
@@ -38,9 +38,6 @@ import { User } from './user/entities/user.entity';
 					'error',
 				],
 				namingStrategy: new SnakeNamingStrategy(),
-				migrations: ['dist/migrations/*.js'],
-				migrationsRun: true,
-				migrationsTableName: 'migrations',
 			}),
 			inject: [ConfigService],
 		}),
@@ -56,4 +53,6 @@ import { User } from './user/entities/user.entity';
 	controllers: [AppController],
 	providers: [],
 })
-export class AppModule implements NestModule {}
+export class AppModule implements NestModule {
+	public configure(consumer: MiddlewareConsumer): void {}
+}

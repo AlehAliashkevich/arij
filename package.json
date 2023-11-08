@@ -7,8 +7,7 @@
 	"scripts": {
 		"pre": "npm run generate:permissions-enum && npm run deploy:sf-description && npm run deploy:permissions",
 		"bootstrap:client": "node scripts/bootstrap-client.js",
-		"bootstrap:catalog": "node scripts/bootstrap-catalog.js",
-		"bootstrap:arji": "node scripts/bootstrap-arji.js",
+		"bootstrap:arij": "node scripts/bootstrap-arij.js",
 		"deploy": "npm run generate:permissions-enum && npm run deploy:sf && npm run deploy:permissions",
 		"deploy:sf": "sfdx force:source:deploy -u dev -p \"force-app\" && npm run deploy:sf-description",
 		"deploy:sf-description": "sfdx force:org:display -u dev --json > connection.json",
