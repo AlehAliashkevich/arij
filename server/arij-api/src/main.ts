@@ -22,6 +22,9 @@ async function bootstrap(): Promise<void> {
 
 	fastifyAdapter.getInstance().addHook('preValidation', async (request: any, reply) => {
 		// TODO: check for Sentry Officially supported way to view body in traces in Fastify
+		if (!request.isMultipart) {
+			return;
+		}
 		request.body = await processRequest(request.raw, reply.raw, {
 			maxFileSize: 262144000, // 250 MB
 			maxFiles: 20,
@@ -30,7 +33,6 @@ async function bootstrap(): Promise<void> {
 
 	const app = await NestFactory.create<NestFastifyApplication>(AppModule, fastifyAdapter);
 	const configService = app.get(ConfigService);
-
 	await app.listen(configService.get('PORT'), '0.0.0.0');
 }
 

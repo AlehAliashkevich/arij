@@ -16,7 +16,7 @@ services:
         env_file:
             - .env
         ports:
-            - 3005:3005
+            - 3005:3001
         depends_on:
             - postgres
             - mongo
@@ -50,14 +50,14 @@ services:
         volumes:
             - mongo:/data/db
         ports:
-            - 27018:27018
+            - 27018:27017
         networks:
             - app
 
     mongo-slave-1:
         image: mongo:6.0.6
         expose:
-            - 27018
+            - 27017
         restart: always
         entrypoint: ['/usr/bin/mongod', '--bind_ip_all', '--replSet', 'rs0']
         environment:
@@ -70,7 +70,7 @@ services:
     mongo-slave-2:
         image: mongo:6.0.6
         expose:
-            - 27018
+            - 27017
         restart: always
         entrypoint: ['/usr/bin/mongod', '--bind_ip_all', '--replSet', 'rs0']
         environment:
