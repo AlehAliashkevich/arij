@@ -3,3 +3,4 @@ server/arij-api/dist/
 server/arij-api/.env
 shared/arij-common/node_modules/
 shared/arij-common/lib/
+node_modules
