@@ -10,6 +10,8 @@ import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 import configuration from './config/configuration';
 import { UserModule } from './user/user.module';
 import { User } from './user/entities/user.entity';
+import { TaskModule } from './task/task.module';
+import { Task } from './task/entities/task.entity';
 
 @Module({
 	imports: [
@@ -31,7 +33,7 @@ import { User } from './user/entities/user.entity';
 				database: configService.get('POSTGRES_DB'),
 				username: configService.get('POSTGRES_USER'),
 				password: configService.get('POSTGRES_PASSWORD'),
-				entities: [User],
+				entities: [Task],
 				synchronize: true,
 				logging: [
 					// 'query',
@@ -45,10 +47,10 @@ import { User } from './user/entities/user.entity';
 			driver: ApolloDriver,
 			autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
 			include: [
-				UserModule,
+				TaskModule,
 			],
 		}),
-		UserModule,
+		TaskModule,
 	],
 	controllers: [AppController],
 	providers: [],
