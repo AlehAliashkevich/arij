@@ -48,4 +48,4 @@ export class Task implements models.Task<string> {
 }
 
 @InputType()
-export class UserInput extends PartialType(Task, InputType) {}
+export class TaskInput extends PartialType(Task, InputType) {}

@@ -33,7 +33,7 @@ import { Task } from './task/entities/task.entity';
 				database: configService.get('POSTGRES_DB'),
 				username: configService.get('POSTGRES_USER'),
 				password: configService.get('POSTGRES_PASSWORD'),
-				entities: [Task],
+				entities: [User, Task],
 				synchronize: true,
 				logging: [
 					// 'query',
@@ -48,9 +48,10 @@ import { Task } from './task/entities/task.entity';
 			autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
 			include: [
 				TaskModule,
+				UserModule
 			],
 		}),
-		TaskModule,
+		TaskModule, UserModule
 	],
 	controllers: [AppController],
 	providers: [],
