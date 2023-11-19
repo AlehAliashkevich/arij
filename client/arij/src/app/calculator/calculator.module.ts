@@ -3,23 +3,23 @@ import { CommonModule } from '@angular/common';
 import { CalculatorComponent } from './calculator.component';
 import { CalculatorInputComponent } from './calculator-input/calculator-input.component';
 import { CalculatorOutputComponent } from './calculator-output/calculator-output.component';
-import { RouterModule, Routes } from '@angular/router'; // +
+import { RouterModule } from '@angular/router';
+import { ErrorPageNotFoundComponent } from './error-page-not-found/error-page-not-found.component';
 
-// ++++
-const appRoutes: Routes = [
-  { path: '', component: CalculatorComponent },
-  { path: 'input', component: CalculatorInputComponent },
-  { path: 'output', component: CalculatorOutputComponent },
-]
+
 @NgModule({
   declarations: [
     CalculatorComponent,
     CalculatorInputComponent,
-    CalculatorOutputComponent
+    CalculatorOutputComponent,
+    ErrorPageNotFoundComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(appRoutes) // +
+    RouterModule,
+
+
+
   ]
 })
 export class CalculatorModule { }
