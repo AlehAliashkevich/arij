@@ -8,13 +8,14 @@ import { ErrorPageNotFoundComponent } from './calculator/error-page-not-found/er
 
 export const routes: Routes = [
   { path: '', component: CalculatorComponent },
-  { path: '**', component: ErrorPageNotFoundComponent }
+  { path: '**', component: ErrorPageNotFoundComponent },
 ];
 
 @NgModule({
   exports: [
     RouterModule,
     CalculatorModule,
+
   ]
 })
 
