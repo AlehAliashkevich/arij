@@ -1,11 +1,13 @@
-import { SystemRecord, TaskInfo } from './index';
+import { SystemRecord, UserInfo } from './index';
 
-export interface Task<T = string> extends SystemRecord<T>, TaskInfo {
+export interface Task<T = string> extends SystemRecord<T>, UserInfo {
 	name: string;
 	description: string;
-    status: Report enum Status{
-		To_Do = 'To_do',
-		In_Progress = 'In_progress',
-		Closed = 'Closed'
-	}
+    status: TaskStatus;
+}
+
+export enum TaskStatus {
+	To_Do = 'To_Do',
+	In_Progress = 'In_Progress',
+	Closed = 'Closed'
 }
