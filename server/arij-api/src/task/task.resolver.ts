@@ -1,6 +1,6 @@
 import { Query, Mutation, Resolver } from '@nestjs/graphql';
 import { CurrentUser } from 'src/auth/user.decorator';
-import { TaskContext } from '@arij/common';
+import { UserContext } from '@arij/common';
 import { TaskService } from './task.service';
 import { Task } from './entities/task.entity';
 import { graphql } from 'graphql';
@@ -15,7 +15,7 @@ export class TaskResolver {
 	}
 
 	@Query(() => [Task], { name: 'tasks' })
-	public getTasks(@CurrentUser() context: TaskContext): Promise<Task[]> {
+	public getTasks(@CurrentUser() context: UserContext): Promise<Task[]> {
 		return this.taskService.getTasks(context);
 	}
 

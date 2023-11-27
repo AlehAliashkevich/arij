@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { TaskContext } from '@arij/common';
+import { UserContext } from '@arij/common';
 import { Task } from './entities/task.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -9,12 +9,12 @@ export class TaskService {
     [x: string]: any;
 	constructor(@InjectRepository(Task) private taskRepo: Repository<Task>,) {}
 
-	public async getTasks(context: TaskContext): Promise<Task[]> {
+	public async getTasks(context: UserContext): Promise<Task[]> {
 		return this.taskRepo.findBy({});
 	}
 
 	public async getTaskByld(id: string): Promise<Task[]> {
-		return this.taskRepo.findBy({id});
+		return this.taskRepo.findBy(id);
 	}
 
 	public async createTask(taskData: Partial<Task>): Promise<Task> {

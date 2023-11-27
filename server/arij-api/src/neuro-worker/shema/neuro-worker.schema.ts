@@ -12,6 +12,8 @@ import * as models from '@arij/common';
 import { from } from 'rxjs';
 import { Document } from 'mongoose';
 
+//добавіть graphql
+
 @Schema()
 export class NeuroWorker extends Document {
 	@Prop({ type: 'uuid' })
