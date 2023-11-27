@@ -9,6 +9,7 @@ import {
 	JoinColumn,
 } from 'typeorm';
 import * as models from '@arij/common';
+import { User } from 'src/user/entities/user.entity';
 
 @Entity()
 @ObjectType()
@@ -29,12 +30,12 @@ export class Task implements models.Task<string> {
 	@Field(() => Task, { nullable: true })
 	@ManyToOne(() => Task, task => task.createdBy, { onDelete: 'CASCADE' })
 	@JoinColumn({ name: 'createdBy_id' })
-	public createdBy: Task;
+	public createdBy: User;
 
 	@Field(() => Task, { nullable: true })
 	@ManyToOne(() => Task, task => task.lastModifiedBy, { onDelete: 'CASCADE' })
 	@JoinColumn({ name: 'lastModifiedBy_id' })
-	public lastModifiedBy: Task;
+	public lastModifiedBy: User;
 
 	@Field({ nullable: true })
 	@Column({ nullable: true })
@@ -43,7 +44,6 @@ export class Task implements models.Task<string> {
 	@Field({ nullable: true })
 	@Column()
 	public description: string;
-
 	
 }
 
