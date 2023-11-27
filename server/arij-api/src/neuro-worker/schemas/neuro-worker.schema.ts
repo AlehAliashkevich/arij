@@ -16,25 +16,32 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class NeuroWorker extends Document {
+	@Field({ nullable: true })
 	@Prop({ type: 'uuid' })
   	public _id: string;
 
+	@Field({ nullable: true })
   	@Prop({ type: Date, default: Date.now })
   	public createdDate: Date;
 
+	@Field({ nullable: true })
   	@Prop({ type: Date, default: Date.now })
   	public lastModifiedDate: Date;
 
+	@Field({ nullable: true })
   	@Prop({ type: 'uuid', ref: 'NeuroWorker', autopopulate: true })
   	public createdBy: NeuroWorker;
 
-  	@Prop({ type: 'uuid', ref: 'NeuroWorker', autopopulate: true })
+  	@Field({ nullable: true })
+	@Prop({ type: 'uuid', ref: 'NeuroWorker', autopopulate: true })
   	public lastModifiedBy: NeuroWorker;
 
-  	@Prop()
+  	@Field({ nullable: true })
+	@Prop()
   	public name: string;
 
-  	@Prop()
+  	@Field({ nullable: true })
+	@Prop()
   	public id: number;
 }
 
