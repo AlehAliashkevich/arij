@@ -12,4 +12,13 @@ export class TaskService {
 	public async getTasks(context: TaskContext): Promise<Task[]> {
 		return this.taskRepo.findBy({});
 	}
+
+	public async getTaskByld(id: string): Promise<Task[]> {
+		return this.taskRepo.findBy({id});
+	}
+
+	public async createTask(taskData: Partial<Task>): Promise<Task> {
+		const newTask = this.taskRepo.create(taskData);
+		return this.taskRepo.save(newTask);
+	}
 }
