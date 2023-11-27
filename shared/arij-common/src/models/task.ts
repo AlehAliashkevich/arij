@@ -1,6 +1,6 @@
 import { SystemRecord, UserInfo } from './index';
 
-export declare enum TaskStatus {
+export enum TaskStatus {
 	To_Do = 'To_Do',
 	In_Progress = 'In_Progress',
 	Closed = 'Closed'

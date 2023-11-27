@@ -50,5 +50,8 @@
 			"prettier --write",
 			"./server/arij-api/node_modules/.bin/eslint --fix"
 		]
+	},
+	"dependencies": {
+		"type-graphql": "^1.1.1"
 	}
 }

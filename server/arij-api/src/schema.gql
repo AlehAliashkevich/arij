@@ -17,6 +17,29 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type Task {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdBy: Task
+  lastModifiedBy: Task
+  name: String
+  description: String
+  status: TaskStatus
+}
+
+enum TaskStatus {
+  To_Do
+  In_Progress
+  Closed
+}
+
 type Query {
   users: [User!]!
+  tasks: [Task!]!
+  getTasks: [Task!]!
+}
+
+type Mutation {
+  createTask: Task!
 }

@@ -10,6 +10,11 @@ import {
 } from 'typeorm';
 import * as models from '@arij/common';
 import { User } from 'src/user/entities/user.entity';
+import {registerEnumType} from '@nestjs/graphql';
+
+registerEnumType(models.TaskStatus, {
+	name: 'TaskStatus'
+});
 
 @Entity()
 @ObjectType()
@@ -44,6 +49,14 @@ export class Task implements models.Task<string> {
 	@Field({ nullable: true })
 	@Column()
 	public description: string;
+
+	@Field(() => models.TaskStatus, { nullable: true })
+	@Column({
+		type: 'enum',
+		enum: models.TaskStatus,
+		nullable: true,
+	})
+	public status: models.TaskStatus;
 	
 }
 
