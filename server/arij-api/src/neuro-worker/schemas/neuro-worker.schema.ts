@@ -11,6 +11,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as models from '@arij/common';
 import { from } from 'rxjs';
 import { Document } from 'mongoose';
+import { User } from '@arij/common';
 
 //добавіть graphql
 
@@ -30,11 +31,11 @@ export class NeuroWorker extends Document {
 
 	@Field({ nullable: true })
   	@Prop({ type: 'uuid', ref: 'NeuroWorker', autopopulate: true })
-  	public createdBy: NeuroWorker;
+  	public createdBy: User;
 
   	@Field({ nullable: true })
 	@Prop({ type: 'uuid', ref: 'NeuroWorker', autopopulate: true })
-  	public lastModifiedBy: NeuroWorker;
+  	public lastModifiedBy: User;
 
   	@Field({ nullable: true })
 	@Prop()
