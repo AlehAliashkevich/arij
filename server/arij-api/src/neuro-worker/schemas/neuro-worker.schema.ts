@@ -1,12 +1,4 @@
-import { Field, InputType, ObjectType, PartialType } from '@nestjs/graphql';
-import {
-	Column,
-	CreateDateColumn,
-	UpdateDateColumn,
-	PrimaryGeneratedColumn,
-	ManyToOne,
-	JoinColumn,
-} from 'typeorm';
+import { Field } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as models from '@arij/common';
 import { from } from 'rxjs';
