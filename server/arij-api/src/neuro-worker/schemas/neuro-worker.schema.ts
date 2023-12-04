@@ -1,49 +1,51 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, ObjectType, registerEnumType, InputType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema, Types } from 'mongoose';
-import { User } from '@arij/common';
-import * as mongoose from 'mongoose';
+import * as models from '@arij/common';
+
+export type NeuroWorkerDocument = NeuroWorker & Document;
+registerEnumType(models.NeuroModel, {
+  name: 'NeuroModel',
+ });
 
 @Schema()
 @ObjectType()
-export class NeuroWorker extends Document {
+@InputType('NeuroWorkerInput')
+export class NeuroWorker implements models.NeuroWorkerModel {
   @Field(() => ID)
   _id: string;
 
   @Field()
   @Prop({ type: Date, default: Date.now })
-  createdDate: Date;
+  public createdDate: Date;
 
   @Field()
   @Prop({ type: Date, default: Date.now })
-  lastModifiedDate: Date;
-
-  @Field(() => ID, { nullable: true })
-  @Prop({ type: Types.ObjectId, ref: 'User', autopopulate: true })
-  createdBy: User['_id'];
-
-  @Field(() => ID, { nullable: true })
-  @Prop({ type: Types.ObjectId, ref: 'User', autopopulate: true })
-  lastModifiedBy: User['_id'];
+  public lastModifiedDate: Date;
 
   @Field()
   @Prop()
-  name: string;
+  public name: string;
 
-  @Field(() => ID)
+  @Field()
   @Prop()
-  id: string;
+  public template: string;
+
+  @Field()
+  @Prop()
+	public sizeTemplate: number;
+
+  @Field()
+  @Prop()
+	public sizeInput: number;
+
+  @Field()
+  @Prop()
+	public sizeOutput: number;
+
+  @Field(() => models.NeuroModel)
+  @Prop({ enum: models.NeuroModel })
+	public model: models.NeuroModel;
 }
 
 export const NeuroWorkerSchema = SchemaFactory.createForClass(NeuroWorker);
-export const NeuroWorkerModel = mongoose.model('NeuroWorker', NeuroWorkerSchema);
-
-export interface NeuroWorker extends Document {
-  _id: string;
-  createdDate: Date;
-  lastModifiedDate: Date;
-  createdBy: User['_id'];
-  lastModifiedBy: User['_id'];
-  name: string;
-  id: string;
-}

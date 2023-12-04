@@ -34,12 +34,52 @@ enum TaskStatus {
   Closed
 }
 
+type NeuroWorker {
+  _id: ID!
+  createdDate: DateTime!
+  lastModifiedDate: DateTime!
+  name: String!
+  template: String!
+  sizeTemplate: Float!
+  sizeInput: Float!
+  sizeOutput: Float!
+  model: NeuroModel!
+}
+
+enum NeuroModel {
+  GPT
+  GPT2
+  GPT3
+  GPT3_5
+  GPT3_5_Turbo
+  GPT4
+  Shap_E
+  CLIP
+  Codex
+  Jukebox
+}
+
+input NeuroWorkerInput {
+  _id: ID!
+  createdDate: DateTime!
+  lastModifiedDate: DateTime!
+  name: String!
+  template: String!
+  sizeTemplate: Float!
+  sizeInput: Float!
+  sizeOutput: Float!
+  model: NeuroModel!
+}
+
 type Query {
+  getNeuroWorkers: [NeuroWorker!]!
+  getNeuroWorkerById(id: String!): NeuroWorker!
   users: [User!]!
   tasks: [Task!]!
   getTasks: [Task!]!
 }
 
 type Mutation {
+  createNeuroWorker(neuroWorker: NeuroWorkerInput!): NeuroWorker!
   createTask: Task!
 }
