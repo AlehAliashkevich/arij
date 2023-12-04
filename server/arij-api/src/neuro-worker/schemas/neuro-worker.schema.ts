@@ -1,41 +1,49 @@
-import { Field } from '@nestjs/graphql';
+import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import * as models from '@arij/common';
-import { from } from 'rxjs';
-import { Document } from 'mongoose';
+import { Document, Schema as MongooseSchema, Types } from 'mongoose';
 import { User } from '@arij/common';
-
-//добавіть graphql
+import * as mongoose from 'mongoose';
 
 @Schema()
+@ObjectType()
 export class NeuroWorker extends Document {
-	@Field({ nullable: true })
-	@Prop({ type: 'uuid' })
-  	public _id: string;
+  @Field(() => ID)
+  _id: string;
 
-	@Field({ nullable: true })
-  	@Prop({ type: Date, default: Date.now })
-  	public createdDate: Date;
+  @Field()
+  @Prop({ type: Date, default: Date.now })
+  createdDate: Date;
 
-	@Field({ nullable: true })
-  	@Prop({ type: Date, default: Date.now })
-  	public lastModifiedDate: Date;
+  @Field()
+  @Prop({ type: Date, default: Date.now })
+  lastModifiedDate: Date;
 
-	@Field({ nullable: true })
-  	@Prop({ type: 'uuid', ref: 'NeuroWorker', autopopulate: true })
-  	public createdBy: User;
+  @Field(() => ID, { nullable: true })
+  @Prop({ type: Types.ObjectId, ref: 'User', autopopulate: true })
+  createdBy: User['_id'];
 
-  	@Field({ nullable: true })
-	@Prop({ type: 'uuid', ref: 'NeuroWorker', autopopulate: true })
-  	public lastModifiedBy: User;
+  @Field(() => ID, { nullable: true })
+  @Prop({ type: Types.ObjectId, ref: 'User', autopopulate: true })
+  lastModifiedBy: User['_id'];
 
-  	@Field({ nullable: true })
-	@Prop()
-  	public name: string;
+  @Field()
+  @Prop()
+  name: string;
 
-  	@Field({ nullable: true })
-	@Prop()
-  	public id: number;
+  @Field(() => ID)
+  @Prop()
+  id: string;
 }
 
 export const NeuroWorkerSchema = SchemaFactory.createForClass(NeuroWorker);
+export const NeuroWorkerModel = mongoose.model('NeuroWorker', NeuroWorkerSchema);
+
+export interface NeuroWorker extends Document {
+  _id: string;
+  createdDate: Date;
+  lastModifiedDate: Date;
+  createdBy: User['_id'];
+  lastModifiedBy: User['_id'];
+  name: string;
+  id: string;
+}
