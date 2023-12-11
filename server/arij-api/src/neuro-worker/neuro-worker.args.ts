@@ -7,3 +7,7 @@ export class CreateNeuroWorkerArgs {
  @Field(() => NeuroWorker, { nullable: false })
  public neuroWorker: NeuroWorker;
 }
+export class UpdateNeuroWorkerArgs {
+    @Field(() => NeuroWorker, { nullable: false })
+    public neuroWorker: NeuroWorker;
+   }

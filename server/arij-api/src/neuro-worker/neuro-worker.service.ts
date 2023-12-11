@@ -13,8 +13,8 @@ export class NeuroWorkerService {
     return neuroWorker;
   }
 
-  async updateNeuroWorker(id: string, updateData: Partial<typeof NeuroWorkerSchema>): Promise<NeuroWorker | null> {
-    return this.neuroWorkerModel.findByIdAndUpdate(id, updateData, { new: true });
+  async updateNeuroWorker(updateData: NeuroWorker): Promise<NeuroWorker> {
+    return this.neuroWorkerModel.update(updateData, { new: true });
   }
 
   async getNeuroWorkers(context: UserContext): Promise<NeuroWorker[]> {
