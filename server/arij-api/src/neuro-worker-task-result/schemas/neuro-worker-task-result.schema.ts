@@ -5,8 +5,8 @@ import * as models from '@arij/common';
 
 export type NeuroWorkerTaskResultDocument = NeuroWorkerTaskResult & Document;
 
-registerEnumType(models.Status, {
-  name: 'Status',
+registerEnumType(models.NeuroWorkerTaskStatus, {
+  name: 'NeuroWorkerTaskStatus',
 });
 
 @Schema()
@@ -14,7 +14,7 @@ registerEnumType(models.Status, {
 @InputType('NeuroWorkerTaskResultInput')
 export class NeuroWorkerTaskResult implements models.NeuroWorkerModel {
   @Field(() => ID)
-  _id: string;
+  public _id: string;
 
   @Field()
   @Prop({ type: Date, default: Date.now })
@@ -26,35 +26,35 @@ export class NeuroWorkerTaskResult implements models.NeuroWorkerModel {
 
   @Field()
   @Prop({ type: String })
-  neuro_workerID: string;
+  public neuroWorkerID: string;
 
   @Field()
   @Prop({ type: String })
-  taskid: string;
+  public taskid: string;
 
   @Field()
   @Prop({ type: String })
-  input: string;
+  public input: string;
 
   @Field()
   @Prop({ type: String })
-  output: string;
+  public output: string;
 
-  @Field(() => models.Status)
-  @Prop({ enum: models.Status })
-  status: models.Status;
-
-  @Field()
-  @Prop({ type: Number })
-  input_tokens: number;
+  @Field(() => models.NeuroWorkerTaskStatus)
+  @Prop({ enum: models.NeuroWorkerTaskStatus })
+  public status: models.NeuroWorkerTaskStatus;
 
   @Field()
   @Prop({ type: Number })
-  output_tokens: number;
+  public inputTokens: number;
 
   @Field()
   @Prop({ type: Number })
-  price: number;
+  public outputTokens: number;
+
+  @Field()
+  @Prop({ type: Number })
+  public price: number;
 }
 
 export const NeuroWorkerTaskResultSchema = SchemaFactory.createForClass(NeuroWorkerTaskResult);

@@ -1,6 +1,6 @@
 import { SystemRecord } from './index';
 
-export enum Status {
+export enum NeuroWorkerTaskStatus {
     COMPLETED = 'COMPLETED',
     FAILED = 'FAILED',
     CANCELED = 'CANCELED',
@@ -8,12 +8,12 @@ export enum Status {
 }
 
 export interface NeuroWorkerModel<T = string> extends SystemRecord<T> {
-    neuro_workerID: string,
+    neuroWorkerID: string,
     taskid: string, 
     input: string, 
     output: string, 
-    status: Status, 
-    input_tokens: number, 
-    output_tokens: number, 
+    status: NeuroWorkerTaskStatus, 
+    inputTokens: number, 
+    outputTokens: number, 
     price: number
 }

@@ -14,7 +14,8 @@ export class NeuroWorkerService {
   }
 
   async updateNeuroWorker(updateData: NeuroWorker): Promise<NeuroWorker> {
-    return this.neuroWorkerModel.update(updateData, { new: true });
+    await this.neuroWorkerModel.updateOne({_id: updateData._id }, updateData);
+    return updateData;
   }
 
   async getNeuroWorkers(context: UserContext): Promise<NeuroWorker[]> {
