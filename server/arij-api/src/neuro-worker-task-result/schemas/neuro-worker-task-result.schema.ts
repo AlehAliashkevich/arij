@@ -12,7 +12,7 @@ registerEnumType(models.NeuroWorkerTaskStatus, {
 @Schema()
 @ObjectType()
 @InputType('NeuroWorkerTaskResultInput')
-export class NeuroWorkerTaskResult implements models.NeuroWorkerModel {
+export class NeuroWorkerTaskResult implements models.NeuroWorkerTaskResultModel {
   @Field(() => ID)
   public _id: string;
 

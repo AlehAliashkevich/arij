@@ -7,7 +7,9 @@ export class CreateNeuroWorkerArgs {
  @Field(() => NeuroWorker, { nullable: false })
  public neuroWorker: NeuroWorker;
 }
+
+@ArgsType()
 export class UpdateNeuroWorkerArgs {
     @Field(() => NeuroWorker, { nullable: false })
     public neuroWorker: NeuroWorker;
-   }
+}

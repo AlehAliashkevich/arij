@@ -81,5 +81,6 @@ type Query {
 
 type Mutation {
   createNeuroWorker(neuroWorker: NeuroWorkerInput!): NeuroWorker!
+  updateNeuroWorker(neuroWorker: NeuroWorkerInput!): NeuroWorker!
   createTask: Task!
 }

@@ -7,7 +7,7 @@ export enum NeuroWorkerTaskStatus {
     IN_PROGRESS = 'IN_PROGRESS',
 }
 
-export interface NeuroWorkerModel<T = string> extends SystemRecord<T> {
+export interface NeuroWorkerTaskResultModel<T = string> extends SystemRecord<T> {
     neuroWorkerID: string,
     taskid: string, 
     input: string, 
