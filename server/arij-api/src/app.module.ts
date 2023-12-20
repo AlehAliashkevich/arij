@@ -12,6 +12,8 @@ import { UserModule } from './user/user.module';
 import { User } from './user/entities/user.entity';
 import { TaskModule } from './task/task.module';
 import { Task } from './task/entities/task.entity';
+import { NeuroWorkerModule } from './neuro-worker/neuro-worker.module';
+import { NeuroWorkerTaskResultModule } from './neuro-worker-task-result/neuro-worker-task-result.module';
 
 @Module({
 	imports: [
@@ -48,10 +50,12 @@ import { Task } from './task/entities/task.entity';
 			autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
 			include: [
 				TaskModule,
-				UserModule
+				UserModule,
+				NeuroWorkerModule,
+				NeuroWorkerTaskResultModule
 			],
 		}),
-		TaskModule, UserModule
+		TaskModule, UserModule, NeuroWorkerModule, NeuroWorkerTaskResultModule
 	],
 	controllers: [AppController],
 	providers: [],
