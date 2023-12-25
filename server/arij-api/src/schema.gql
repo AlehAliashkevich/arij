@@ -35,15 +35,15 @@ enum TaskStatus {
 }
 
 type NeuroWorker {
-  _id: ID!
-  createdDate: DateTime!
-  lastModifiedDate: DateTime!
+  _id: ID
+  createdDate: DateTime
+  lastModifiedDate: DateTime
   name: String!
   template: String!
-  sizeTemplate: Float!
-  sizeInput: Float!
-  sizeOutput: Float!
-  model: NeuroModel!
+  sizeTemplate: Float
+  sizeInput: Float
+  sizeOutput: Float
+  model: NeuroModel
 }
 
 enum NeuroModel {
@@ -59,16 +59,27 @@ enum NeuroModel {
   Jukebox
 }
 
+input TaskInput {
+  _id: String
+  createdDate: DateTime
+  lastModifiedDate: DateTime
+  createdBy: TaskInput
+  lastModifiedBy: TaskInput
+  name: String
+  description: String
+  status: TaskStatus
+}
+
 input NeuroWorkerInput {
-  _id: ID!
-  createdDate: DateTime!
-  lastModifiedDate: DateTime!
+  _id: ID
+  createdDate: DateTime
+  lastModifiedDate: DateTime
   name: String!
   template: String!
-  sizeTemplate: Float!
-  sizeInput: Float!
-  sizeOutput: Float!
-  model: NeuroModel!
+  sizeTemplate: Float
+  sizeInput: Float
+  sizeOutput: Float
+  model: NeuroModel
 }
 
 type Query {
@@ -82,5 +93,5 @@ type Query {
 type Mutation {
   createNeuroWorker(neuroWorker: NeuroWorkerInput!): NeuroWorker!
   updateNeuroWorker(neuroWorker: NeuroWorkerInput!): NeuroWorker!
-  createTask: Task!
+  createTask(task: TaskInput!): Task!
 }

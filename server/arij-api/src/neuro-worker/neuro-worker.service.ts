@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { UserContext } from '@arij/common';
 import { NeuroWorker, NeuroWorkerDocument, NeuroWorkerSchema } from './schemas/neuro-worker.schema';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
@@ -9,7 +9,14 @@ export class NeuroWorkerService {
   constructor(@InjectModel('NeuroWorker') private readonly neuroWorkerModel: Model<NeuroWorkerDocument>) {}
 
   async createNeuroWorker(neuroWorker: NeuroWorker ): Promise<NeuroWorker> {
-    await this.neuroWorkerModel.updateOne({}, neuroWorker);
+    /*neuroWorker._id = new Types.ObjectId();*/
+    neuroWorker.createdDate = new Date();
+    await this.neuroWorkerModel.bulkWrite(
+      [{
+        insertOne: {
+        document: neuroWorker}
+      }]
+     );
     return neuroWorker;
   }
 
