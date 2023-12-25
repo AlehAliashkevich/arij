@@ -1,17 +1,18 @@
-import { Query, Mutation, Resolver } from '@nestjs/graphql';
+import { Query, Mutation, Resolver, Args } from '@nestjs/graphql';
 import { CurrentUser } from 'src/auth/user.decorator';
 import { UserContext } from '@arij/common';
 import { TaskService } from './task.service';
 import { Task } from './entities/task.entity';
 import { graphql } from 'graphql';
+import { CreateTaskArgs } from './task.args';
 
 @Resolver()
 export class TaskResolver {
 	constructor(private taskService: TaskService) {}
 
 	@Mutation(() => Task)
-	public createTask(@CurrentUser('input') input: Partial<Task>): Promise<Task>{
-		return this.taskService.createTask(input);
+	public createTask(@Args() args: CreateTaskArgs ): Promise<Task>{
+		return this.taskService.createTask(args.task);
 	}
 
 	@Query(() => [Task], { name: 'tasks' })

@@ -12,14 +12,14 @@ registerEnumType(models.NeuroModel, {
 @ObjectType()
 @InputType('NeuroWorkerInput')
 export class NeuroWorker implements models.NeuroWorkerModel {
-  @Field(() => ID)
-  _id: string;
+  @Field(() => ID, {nullable: true })
+  public _id: string;
 
-  @Field()
+  @Field({nullable: true })
   @Prop({ type: Date, default: Date.now })
   public createdDate: Date;
 
-  @Field()
+  @Field({nullable: true })
   @Prop({ type: Date, default: Date.now })
   public lastModifiedDate: Date;
 
@@ -31,19 +31,19 @@ export class NeuroWorker implements models.NeuroWorkerModel {
   @Prop()
   public template: string;
 
-  @Field()
+  @Field({nullable: true })
   @Prop()
 	public sizeTemplate: number;
 
-  @Field()
+  @Field({nullable: true })
   @Prop()
 	public sizeInput: number;
 
-  @Field()
+  @Field({nullable: true })
   @Prop()
 	public sizeOutput: number;
 
-  @Field(() => models.NeuroModel)
+  @Field(() => models.NeuroModel, {nullable: true })
   @Prop({ enum: models.NeuroModel })
 	public model: models.NeuroModel;
 }

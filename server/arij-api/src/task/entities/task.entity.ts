@@ -18,6 +18,7 @@ registerEnumType(models.TaskStatus, {
 
 @Entity()
 @ObjectType()
+@InputType('TaskInput')
 export class Task implements models.Task<string> {
 	// system fields
 	@Field({ nullable: true })
